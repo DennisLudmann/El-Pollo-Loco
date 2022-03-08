@@ -10,6 +10,7 @@ class World {
     clouds = [
         new Cloud()
     ];
+
     backgroundObjects = [
         new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 0, 0),
         new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0), //passing on (img, x)
@@ -28,9 +29,8 @@ class World {
 
     draw() {                                                                                //pay attention to the order the objects will be drawn
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.addObjectToMap(this.clouds);
         this.addObjectToMap(this.backgroundObjects);
+        this.addObjectToMap(this.clouds);
         this.addToMap(this.character);      //is not an array, so no need for "forEach"
         this.addObjectToMap(this.enemies);
              
@@ -43,9 +43,8 @@ class World {
     }
 
     addObjectToMap(objects){
-        debugger;
-        objects.forEach(obj => {
-            this.addToMap(obj);
+           objects.forEach(o => {
+            this.addToMap(o);
         });
      }
 
