@@ -4,7 +4,7 @@ class MovableObject {
     img;
     hight = 150;
     width = 100;
-
+    imageCache = {};
 
     loadImage(path) {
 
@@ -13,6 +13,13 @@ class MovableObject {
 
     }
 
+    loadImages(arr) {                // pulling the info from character constructor
+       arr.forEach((path) => {
+           let img = new Image();
+           img.src = path;
+           this.imageCache[path] = img;    //this for a variable outside the function in object oriented
+       });
+    }
 
     moveRight() {
         console.log('Moving right');
