@@ -1,6 +1,7 @@
 class Chicken extends MovableObject{
     hight = 90;
     width = 60;
+    
     IMAGE_WALKING = [
         'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/1.Ga_paso_derecho.png',
         'img/3.Secuencias_Enemy_básico/Versión_Gallinita (estas salen por orden de la gallina gigantona)/2-Ga_centro.png',
@@ -18,12 +19,14 @@ constructor(){      // you need super to manipulate a method (not a variable lik
 }
 
 animate(){
+    this.moveLeft();
+    this.speed = 0.3 + Math.random() * 0.75;
     setInterval(()  => {
         let i = this.currentImage % this.IMAGE_WALKING.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
         let path = this.IMAGE_WALKING[i];
         this.img = this.imageCache[path];
         this.currentImage++;
-    }, 90);
+           }, 90);
 
 }
 
