@@ -9,3 +9,7 @@ function init(){
    console.log('My character is', world.character);
    console.log('My character is', world.enemies);
 }
+
+window.addEventListener("keydown", (e) => {
+    console.log(e);
+});
