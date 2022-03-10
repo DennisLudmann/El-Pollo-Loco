@@ -15,7 +15,7 @@ function init(){
 window.addEventListener("keydown", (e) => {     // for arrow and "wasd" keys
     if (e.keyCode == 39 || e.keyCode == 68) {
         keyboard.RIGHT = true;
-        console.log(keyboard.RIGHT);
+       
     }
      if (e.keyCode == 37 || e.keyCode == 65) {
         keyboard.LEFT = true;
@@ -38,7 +38,7 @@ window.addEventListener("keydown", (e) => {     // for arrow and "wasd" keys
 window.addEventListener("keyup", (e) => {
     if (e.keyCode == 39 || e.keyCode == 68) {
         keyboard.RIGHT = false;
-        console.log(keyboard.RIGHT);
+        
     }
      if (e.keyCode == 37 || e.keyCode == 65) {
         keyboard.LEFT = false;
