@@ -35,7 +35,7 @@ class Character extends MovableObject {
 
             setInterval(() => {
                               
-                if (this.world.keyboard.RIGHT){         //if key.Right is true, execute the moving
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT){         //if key.Right is true, execute moving
                     
                      // Moving animation
                 let i = this.currentImage % this.IMAGE_WALKING.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
