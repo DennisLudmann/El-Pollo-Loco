@@ -33,6 +33,7 @@ class Character extends MovableObject {
                     this.x -= this.speed;
                     this.otherDirection = true;     // mirror image when moving back
                 }
+                this.world.camera_x = -this.x;      // so the background moves in the other direction of the move/animation
            }, 1000 / 60);
 
             setInterval(() => {

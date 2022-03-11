@@ -20,6 +20,7 @@ class World {
     canvas;
     ctx;
     keyboard;
+    camera_x;
     
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -35,11 +36,13 @@ class World {
 
     draw() {                                                                                //pay attention to the order the objects will be drawn
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.translate(this.camera_x, 0);                                           // needs two parameters to move (x,y)
         this.addObjectToMap(this.backgroundObjects);
         this.addObjectToMap(this.clouds);
         this.addToMap(this.character);      //is not an array, so no need for "forEach"
         this.addObjectToMap(this.enemies);
-             
+    
+        this.ctx.translate(-this.camera_x, 0);
 
         // Draw will be called repeatetly
         let self = this;            // it doesnt accept this. in the function so you call this something else and parse in that something else
