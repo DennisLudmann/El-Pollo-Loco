@@ -11,17 +11,41 @@ class World {
         new Cloud()
     ];
 
-    backgroundObjects = [
-        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 0, 0),
-        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0), //passing on (img, x)
+    backgroundObjects = [                       //passing on (img, x)
+        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', -719),
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/2.png', -719),
+        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/2.png', -719),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/2.png', -719),
+        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 0),
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0),
         new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png', 0),
-        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 0)
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 0),
+        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 719),
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/2.png', 719),
+        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/2.png', 719),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/2.png', 719),
+        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 719 * 2),
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 719 * 2),
+        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png', 719 * 2),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 719 * 2),
+        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 719 * 3),
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/2.png', 719 * 3),
+        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/2.png', 719 * 3),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/2.png', 719 * 3),
+        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 719 * 4),
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 719 * 4),
+        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/1.png', 719 * 4),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/1.png', 719 * 4),
+        new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', 719 * 5),
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/2.png', 719 * 5),
+        new BackgroundObject('img/5.Fondo/Capas/2.Fondo2/2.png', 719 * 5),
+        new BackgroundObject('img/5.Fondo/Capas/1.suelo-fondo1/2.png', 719 * 5)
     ];
     canvas;
     ctx;
     keyboard;
     camera_x;
-    
+
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;                   // to pass the details to the canvas outside the function
@@ -30,7 +54,15 @@ class World {
         this.setWorld();
     }
 
-    setWorld(){
+    setBackgroundObjects() {
+        this.backgroundObjects
+        for (let i = 0; i < array.length; i++) {
+            const element = array[i];
+
+        }
+    }
+
+    setWorld() {
         this.character.world = this;      //passing world variables to character fx "keyboard"
     }
 
@@ -41,7 +73,7 @@ class World {
         this.addObjectToMap(this.clouds);
         this.addToMap(this.character);      //is not an array, so no need for "forEach"
         this.addObjectToMap(this.enemies);
-    
+
         this.ctx.translate(-this.camera_x, 0);
 
         // Draw will be called repeatetly
@@ -51,11 +83,11 @@ class World {
         });
     }
 
-    addObjectToMap(objects){
-           objects.forEach(o => {
+    addObjectToMap(objects) {
+        objects.forEach(o => {
             this.addToMap(o);
         });
-     }
+    }
 
     addToMap(mo) {
         if (mo.otherDirection) {                    //does the add object have a different direction
