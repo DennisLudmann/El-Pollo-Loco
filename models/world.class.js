@@ -1,11 +1,8 @@
 class World {
 
     character = new Character();
-    enemies;
 
-    clouds;
-
-    backgroundObjects;
+    level = level1;
     canvas;
     ctx;
     keyboard;
@@ -34,10 +31,10 @@ class World {
     draw() {                                                                                //pay attention to the order the objects will be drawn
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);                                           // needs two parameters to move (x,y)
-        this.addObjectToMap(this.backgroundObjects);
-        this.addObjectToMap(this.clouds);
+        this.addObjectToMap(this.level.backgroundObjects);
+        this.addObjectToMap(this.level.clouds);
         this.addToMap(this.character);      //is not an array, so no need for "forEach"
-        this.addObjectToMap(this.enemies);
+        this.addObjectToMap(this.level.enemies);
 
         this.ctx.translate(-this.camera_x, 0);
 

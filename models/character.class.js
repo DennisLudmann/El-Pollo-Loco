@@ -25,16 +25,16 @@ class Character extends MovableObject {
     animate() {
        
             setInterval(()  => {
-                if (this.world.keyboard.RIGHT){
+                if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x){
                     this.x += this.speed;
                     this.otherDirection = false;
                 }
-                if (this.world.keyboard.LEFT){
+                if (this.world.keyboard.LEFT && this.x > 0 ){    // so you cant run out of the map on the left side
                     this.x -= this.speed;
                     this.otherDirection = true;     // mirror image when moving back
                 }
-                this.world.camera_x = -this.x;      // so the background moves in the other direction of the move/animation
-           }, 1000 / 60);
+                this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
+           }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
 
             setInterval(() => {
                               
