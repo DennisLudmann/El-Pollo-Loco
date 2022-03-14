@@ -16,21 +16,27 @@ class MovableObject {
     }
 
     loadImages(arr) {                // pulling the info from character constructor
-       arr.forEach((path) => {
-           let img = new Image();
-           img.src = path;
-           this.imageCache[path] = img;    //this for a variable outside the function in object oriented
-       });
+        arr.forEach((path) => {
+            let img = new Image();
+            img.src = path;
+            this.imageCache[path] = img;    //this for a variable outside the function in object oriented
+        });
     }
 
     moveRight() {
         console.log('Moving right');
     }
     moveLeft() {
-                setInterval(()  =>  {
-                this.x -= this.speed;              // reduces x by 0.2 everytime 
-                }, 1000 / 60);              // 60 frames per secund 
-        }
-    
+        setInterval(() => {
+            this.x -= this.speed;              // reduces x by 0.2 everytime 
+        }, 1000 / 60);              // 60 frames per secund 
+    }
 
+    playAnimation(images) {
+        let i = this.currentImage % this.IMAGE_WALKING.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
 }
+

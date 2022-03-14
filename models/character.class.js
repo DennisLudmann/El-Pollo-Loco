@@ -25,34 +25,32 @@ class Character extends MovableObject {
     }
 
     animate() {
-       
-            setInterval(()  => {
-                this.walking_sound.pause();
-                if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x){
-                    this.x += this.speed;
-                    this.otherDirection = false;
-                    this.walking_sound.play();
-                }
-                if (this.world.keyboard.LEFT && this.x > 0 ){    // so you cant run out of the map on the left side
-                    this.x -= this.speed;
-                    this.otherDirection = true;     // mirror image when moving back
-                    this.walking_sound.play();
-                }
-                this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
-           }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
 
-            setInterval(() => {
-                              
-                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT){         //if key.Right is true, execute moving
-                    
-                     // Moving animation
-                let i = this.currentImage % this.IMAGE_WALKING.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
-                let path = this.IMAGE_WALKING[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
+        setInterval(() => {
+            this.walking_sound.pause();
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+                this.x += this.speed;
+                this.otherDirection = false;
+                this.walking_sound.play();
             }
-            }, 50);
-        
+            if (this.world.keyboard.LEFT && this.x > 0) {    // so you cant run out of the map on the left side
+                this.x -= this.speed;
+                this.otherDirection = true;     // mirror image when moving back
+                this.walking_sound.play();
+            }
+            this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
+        }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
+
+
+        setInterval(() => {
+
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {         //if key.Right or Left is true, execute moving
+
+                // Moving animation
+                this.playAnimation(this.IMAGE_WALKING);
+            }
+        }, 50);
+
 
     }
 
