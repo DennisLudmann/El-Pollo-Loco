@@ -13,14 +13,14 @@ class MovableObject {
 
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround()) {
+            if (this.isAboveGround() || this.seedY > 0) {       // isAboveGround so gravity pulls Pepe down or Jumps so he can fly up and later gets pulled down
                 this.y -= this.seedY;
                 this.seedY -= this.acceleration;
             }
         }, 1000 / 25);
     }
 
-    isAboveGround(){                // to be used in different functions in fx jump function/graphic swap etc.
+    isAboveGround() {                // to be used in different functions in fx jump function/graphic swap etc.
         return this.y < 115;
     }
 
@@ -40,19 +40,26 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Moving right');
+        this.x += this.speed;
+        this.otherDirection = false;
+        this.walking_sound.play();
     }
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;              // reduces x by 0.2 everytime 
-        }, 1000 / 60);              // 60 frames per secund 
-    }
+        this.x -= this.speed;
+        this.otherDirection = true;               // reduces x by 0.2 everytime 
 
-    playAnimation(images) {
-        let i = this.currentImage % this.IMAGE_WALKING.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
-        let path = images[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
     }
+    
+
+playAnimation(images) {
+    let i = this.currentImage % this.IMAGE_WALKING.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
+    let path = images[i];
+    this.img = this.imageCache[path];
+    this.currentImage++;
+}
+
+jump() {
+    this.seedY = 25;
+}
 }
 
