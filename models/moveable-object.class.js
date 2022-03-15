@@ -46,8 +46,6 @@ class MovableObject {
     }
     moveLeft() {
         this.x -= this.speed;
-        this.otherDirection = true;               // reduces x by 0.2 everytime 
-
     }
     
 

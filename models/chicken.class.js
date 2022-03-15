@@ -21,7 +21,6 @@ class Chicken extends MovableObject {
     animate() {
         setInterval(() => {
             this.moveLeft();
-            this.otherDirection = false; 
         }, 1000 / 60);              // 60 frames per secund 
         this.speed = 0.3 + Math.random() * 0.75;
         setInterval(() => {

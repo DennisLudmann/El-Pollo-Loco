@@ -44,11 +44,13 @@ class Character extends MovableObject {
         setInterval(() => {
             this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-               this.moveRight();
-               this.walking_sound.play();
+                this.moveRight();
+                this.otherDirection = false;
+                this.walking_sound.play();
             }
             if (this.world.keyboard.LEFT && this.x > 0) {    // so you cant run out of the map on the left side
                 this.moveLeft();                                 // mirror image when moving back
+                this.otherDirection = true;
                 this.walking_sound.play();
             }
             if (this.world.keyboard.JUMP && !this.isAboveGround()) {         // Jump function !negate
@@ -58,17 +60,17 @@ class Character extends MovableObject {
             this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
         }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
 
-        
+
         setInterval(() => {
 
             if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGE_JUMPING);
-            } else{
+            } else {
 
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {         //if key.Right or Left is true, execute moving
-                this.playAnimation(this.IMAGE_WALKING);
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {         //if key.Right or Left is true, execute moving
+                    this.playAnimation(this.IMAGE_WALKING);
+                }
             }
-        }
         }, 50);
 
 
@@ -76,7 +78,7 @@ class Character extends MovableObject {
 
 
 
-  
+
 
 
 }
