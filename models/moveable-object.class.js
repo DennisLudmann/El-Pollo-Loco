@@ -8,6 +8,22 @@ class MovableObject {
     imageCache = {};
     currentImage = 0;
     otherDirection = false;
+    seedY = 0;
+    acceleration = 2;
+
+    applyGravity() {
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.y -= this.seedY;
+                this.seedY -= this.acceleration;
+            }
+        }, 1000 / 25);
+    }
+
+    isAboveGround(){                // to be used in different functions in fx jump function/graphic swap etc.
+        return this.y < 115;
+    }
+
     loadImage(path) {
 
         this.img = new Image();

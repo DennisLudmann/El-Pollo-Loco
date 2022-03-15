@@ -1,7 +1,7 @@
 class Character extends MovableObject {
 
     x = 50;
-    y = 133;
+    y = 0 ; // 133 is ground
     hight = 310;
     width = 100;
     speed = 8;
@@ -20,7 +20,7 @@ class Character extends MovableObject {
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.IMAGE_WALKING);
-
+        this.applyGravity();
         this.animate();
     }
 
