@@ -11,6 +11,7 @@ class MovableObject {
     seedY = 0;
     acceleration = 2;
 
+    
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.seedY > 0) {       // isAboveGround so gravity pulls Pepe down or Jumps so he can fly up and later gets pulled down
@@ -37,6 +38,16 @@ class MovableObject {
             img.src = path;
             this.imageCache[path] = img;    //this for a variable outside the function in object oriented
         });
+    }
+    draw(ctx){
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);     // add an image "mirrored" if otherDirection was true
+    }
+    drawFrame(ctx){
+        ctx.beginPath();
+        ctx.lineWidth = '2';
+        ctx.strokeStyle = 'blue';
+        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.stroke();
     }
 
     moveRight() {

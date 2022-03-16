@@ -53,21 +53,26 @@ class World {
 
     addToMap(mo) {
         if (mo.otherDirection) {                    //does the add object have a different direction
-            this.ctx.save();                        // if so, we save the current settings
-            this.ctx.translate(mo.width, 0);        // then we change the method we add the images
-            this.ctx.scale(-1, 1);                  // turn the picture on the y axes (mirror)
-            mo.x = mo.x * -1;
+          this.mirrorImage(mo);
         }
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);     // add an image "mirrored" if otherDirection was true
-        this.ctx.beginPath();
-        this.ctx.lineWidth = '2';
-        this.ctx.strokeStyle = 'blue';
-        this.ctx.rect(mo.x, mo.y, mo.x + mo.width, mo.y + mo.height,);
-        this.ctx.stroke();
-       
+        mo.draw(this.ctx);                              
+        mo.drawFrame(this.ctx);
+
+        
+     
         if (mo.otherDirection) {                                        // change things back to the privius setting
-            mo.x = mo.x * -1;
-            this.ctx.restore();
+            this.mirrorImageReverse(mo);
         }
+    }
+
+    mirrorImage(mo){
+        this.ctx.save();                        // if so, we save the current settings
+        this.ctx.translate(mo.width, 0);        // then we change the method we add the images
+        this.ctx.scale(-1, 1);                  // turn the picture on the y axes (mirror)
+        mo.x = mo.x * -1;
+    }
+    mirrorImageReverse(mo){
+        mo.x = mo.x * -1;
+        this.ctx.restore();
     }
 }
