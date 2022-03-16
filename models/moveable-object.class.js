@@ -10,6 +10,7 @@ class MovableObject {
     otherDirection = false;
     seedY = 0;
     acceleration = 2;
+    hitPoints = 100;
 
 
     applyGravity() {
@@ -58,6 +59,17 @@ class MovableObject {
         this.y + this.height > mo.y &&                  // compares bottom right character with left bottom left enemy
         this.x < mo.x &&                                // compares top left character with top tight enemy
         this.y < mo.y + mo.height;                      // compares bottom left character with right bottom of enemy
+    }
+
+    isHit(){
+        this.hitPoints -= 3;
+        if (this.hitPoints < 0) {
+            this.hitPoints = 0;
+        }
+    }
+
+    isDead(){
+        return this.hitPoints == 0;                     // returns true when hitPoints are 0
     }
 
     moveRight() {

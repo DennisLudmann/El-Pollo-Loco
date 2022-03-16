@@ -32,7 +32,8 @@ class World {
         setInterval(() => {
             this.level.enemies.forEach(enemy => {
                 if (this.character.isColliding(enemy)) {
-                    console.log('MAJOR INJURY BY:', enemy)
+                   this.character.isHit();
+                    console.log('MAJOR INJURY, DOWN TO:', this.character.hitPoints)
                 }
             });
         }, 200);
