@@ -14,6 +14,7 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkCollision();
     }
 
     setBackgroundObjects() {
@@ -26,6 +27,15 @@ class World {
 
     setWorld() {
         this.character.world = this;      //passing world variables to character fx "keyboard"
+    }
+    checkCollision(){
+        setInterval(() => {
+            this.level.enemies.forEach(enemy => {
+                if (this.character.isColliding(enemy)) {
+                    console.log('MAJOR INJURY BY:', enemy)
+                }
+            });
+        }, 200);
     }
 
     draw() {                                                                                //pay attention to the order the objects will be drawn
