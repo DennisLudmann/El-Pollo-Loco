@@ -37,11 +37,11 @@ class World {
         this.addObjectToMap(this.level.enemies);
 
         this.ctx.translate(-this.camera_x, 0);
-
-        // Draw will be called repeatetly
+      
+        
         let self = this;            // it doesnt accept this. in the function so you call this something else and parse in that something else
         requestAnimationFrame(function () {
-            self.draw();
+            self.draw();                // Draw will be called repeatetly 
         });
     }
 
@@ -58,7 +58,13 @@ class World {
             this.ctx.scale(-1, 1);                  // turn the picture on the y axes (mirror)
             mo.x = mo.x * -1;
         }
-        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.hight);     // add an image "mirrored" if otherDirection was true
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);     // add an image "mirrored" if otherDirection was true
+        this.ctx.beginPath();
+        this.ctx.lineWidth = '2';
+        this.ctx.strokeStyle = 'blue';
+        this.ctx.rect(mo.x, mo.y, mo.x + mo.width, mo.y + mo.height,);
+        this.ctx.stroke();
+       
         if (mo.otherDirection) {                                        // change things back to the privius setting
             mo.x = mo.x * -1;
             this.ctx.restore();
