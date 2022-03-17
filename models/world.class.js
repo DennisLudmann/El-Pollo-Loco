@@ -34,6 +34,7 @@ class World {
             this.level.enemies.forEach(enemy => {
                 if (this.character.isColliding(enemy)) {
                     this.character.isHit();
+                    this.statusBar.setPercentage(this.character.hitPoints)
                 }
             });
         }, 200);
@@ -43,10 +44,15 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);                                           // needs two parameters to move (x,y)
         this.addObjectToMap(this.level.backgroundObjects);
+
+        //--------------------- to be used for static objects
+        this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBar);
-        this.addObjectToMap(this.level.clouds);
+        this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
+
         this.addToMap(this.character);      //is not an array, so no need for "forEach"
         this.addObjectToMap(this.level.enemies);
+        this.addObjectToMap(this.level.clouds);
 
         this.ctx.translate(-this.camera_x, 0);
 
@@ -69,8 +75,6 @@ class World {
         }
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
-
-
 
         if (mo.otherDirection) {                                        // change things back to the privius setting
             this.mirrorImageReverse(mo);
