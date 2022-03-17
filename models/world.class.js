@@ -28,12 +28,11 @@ class World {
     setWorld() {
         this.character.world = this;      //passing world variables to character fx "keyboard"
     }
-    checkCollision(){
+    checkCollision() {
         setInterval(() => {
             this.level.enemies.forEach(enemy => {
                 if (this.character.isColliding(enemy)) {
-                   this.character.isHit();
-                    console.log('MAJOR INJURY, DOWN TO:', this.character.hitPoints)
+                    this.character.isHit();
                 }
             });
         }, 200);
@@ -48,8 +47,8 @@ class World {
         this.addObjectToMap(this.level.enemies);
 
         this.ctx.translate(-this.camera_x, 0);
-      
-        
+
+
         let self = this;            // it doesnt accept this. in the function so you call this something else and parse in that something else
         requestAnimationFrame(function () {
             self.draw();                // Draw will be called repeatetly 
@@ -64,25 +63,25 @@ class World {
 
     addToMap(mo) {
         if (mo.otherDirection) {                    //does the add object have a different direction
-          this.mirrorImage(mo);
+            this.mirrorImage(mo);
         }
-        mo.draw(this.ctx);                              
+        mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
 
-        
-     
+
+
         if (mo.otherDirection) {                                        // change things back to the privius setting
             this.mirrorImageReverse(mo);
         }
     }
 
-    mirrorImage(mo){
+    mirrorImage(mo) {
         this.ctx.save();                        // if so, we save the current settings
         this.ctx.translate(mo.width, 0);        // then we change the method we add the images
         this.ctx.scale(-1, 1);                  // turn the picture on the y axes (mirror)
         mo.x = mo.x * -1;
     }
-    mirrorImageReverse(mo){
+    mirrorImageReverse(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }

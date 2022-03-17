@@ -1,12 +1,5 @@
-class MovableObject {
-    x = 120;
-    y = 290;
-    img;
-    height = 150;
-    width = 100;
+class MovableObject extends DrawableObject {
     speed = 0.2;
-    imageCache = {};
-    currentImage = 0;
     otherDirection = false;
     seedY = 0;
     acceleration = 2;
@@ -27,23 +20,7 @@ class MovableObject {
         return this.y < 115;
     }
 
-    loadImage(path) {
-
-        this.img = new Image();
-        this.img.src = path;
-
-    }
-
-    loadImages(arr) {                // pulling the info from character constructor
-        arr.forEach((path) => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;    //this for a variable outside the function in object oriented
-        });
-    }
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);     // add an image "mirrored" if otherDirection was true
-    }
+    
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
 
@@ -54,15 +31,15 @@ class MovableObject {
             ctx.stroke();
         }
     }
-// character.isColliding(chicken)
-    isColliding(mo){                                    //if character is checking
+    // character.isColliding(chicken)
+    isColliding(mo) {                                    //if character is checking
         return this.x + this.width > mo.x &&            // compares top right character with top left enemy - collisionbox
-        this.y + this.height > mo.y &&                  // compares bottom right character with left bottom left enemy
-        this.x < mo.x &&                                // compares top left character with top tight enemy
-        this.y < mo.y + mo.height;                      // compares bottom left character with right bottom of enemy
+            this.y + this.height > mo.y &&                  // compares bottom right character with left bottom left enemy
+            this.x < mo.x &&                                // compares top left character with top tight enemy
+            this.y < mo.y + mo.height;                      // compares bottom left character with right bottom of enemy
     }
 
-    isHit(){
+    isHit() {
         this.hitPoints -= 3;
         if (this.hitPoints < 0) {
             this.hitPoints = 0;
@@ -71,13 +48,13 @@ class MovableObject {
         }
     }
 
-    isHurt(){
+    isHurt() {
         let timepassed = new Date().getTime() - this.lastHit;   // difference in ms
         timepassed = timepassed / 1000;                         // difference in s
-        return timepassed < 0.7;
+        return timepassed < 0.3;
     }
 
-    isDead(){
+    isDead() {
         return this.hitPoints == 0;                     // returns true when hitPoints are 0
     }
 
@@ -102,6 +79,6 @@ class MovableObject {
         this.seedY = 25;
     }
 
-   
+
 }
 
