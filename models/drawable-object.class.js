@@ -11,19 +11,17 @@ class DrawableObject {
 
         this.img = new Image();
         this.img.src = path;
-
     }
 
-    loadImages(arr) {                // pulling the info from character constructor
+    loadImages(arr) {                // pulling the info from fx character constructor
         arr.forEach((path) => {
             let img = new Image();
             img.src = path;
-            this.imageCache[path] = img;    //this for a variable outside the function in object oriented
+            this.imageCache[path] = img;    
         });
     }
     draw(ctx) {
-        debugger;
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);     // add an image "mirrored" if otherDirection was true
+             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);     // add an image "mirrored" if otherDirection was true
     }
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {

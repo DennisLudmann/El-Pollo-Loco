@@ -9,16 +9,44 @@ class StatusBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador vida/azul/100_.png'
     ];
 
+    IMAGES_COINBAR = [
+        'img/7.Marcadores/Barra/Marcador moneda/azul/0_.png',
+        'img/7.Marcadores/Barra/Marcador moneda/azul/20_.png',
+        'img/7.Marcadores/Barra/Marcador moneda/azul/40_.png',
+        'img/7.Marcadores/Barra/Marcador moneda/azul/60_.png',
+        'img/7.Marcadores/Barra/Marcador moneda/azul/80_.png',
+        'img/7.Marcadores/Barra/Marcador moneda/azul/100_.png'
+    ];
+
+    IMAGES_BOTTLEBAR = [
+        'img/7.Marcadores/Barra\Marcador_botella/Azul/0_.png',
+        'img/7.Marcadores/Barra\Marcador_botella/Azul/20_.png',
+        'img/7.Marcadores/Barra\Marcador_botella/Azul/40_.png',
+        'img/7.Marcadores/Barra\Marcador_botella/Azul/60_.png',
+        'img/7.Marcadores/Barra\Marcador_botella/Azul/80_.png',
+        'img/7.Marcadores/Barra\Marcador_botella/Azul/100_.png'
+         
+    ];
+
     percentage = 100;
+    totalcoins = 0;
+    totalbottles = 0;
 
     constructor(){
         super();
         this.loadImages(this.IMAGES_HITPOINTS);
+        //this.loadImages(this.IMAGES_BOTTLEBAR);
         this.x = 10;
         this.y = 0;
         this.height = 50;
         this.width = 170;
         this.setPercentage(100);                //so the img is set from the beginning
+       // this.setBottleBar();
+    }
+
+    setBottleBar(){
+        let path = this.IMAGES_BOTTLEBAR[0];         
+        this.img = this.imageCache[path];
     }
 
     setPercentage(percentage){
@@ -46,7 +74,5 @@ class StatusBar extends DrawableObject {
         else {
             return 0;
         } 
- 
-
-    }
+     }
 }

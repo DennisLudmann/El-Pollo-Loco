@@ -7,7 +7,9 @@ class World {
     ctx;
     keyboard;
     camera_x;
-    statusBar = new StatusBar(); 
+    statusBar = new StatusBar();
+    throwableObjects = [new ThrowableObjects()];
+    
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -53,6 +55,7 @@ class World {
         this.addToMap(this.character);      //is not an array, so no need for "forEach"
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.level.clouds);
+        this.addObjectToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0);
 
