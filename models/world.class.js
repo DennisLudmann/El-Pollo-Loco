@@ -9,7 +9,7 @@ class World {
     camera_x;
     statusBar = new StatusBar();
     throwableObjects = [new ThrowableObjects()];
-    
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -17,29 +17,41 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollision();
+        this.run();
     }
 
-    setBackgroundObjects() {
+  
+    setWorld() {
+        this.character.world = this;      //passing world variables to character fx "keyboard"
+    }
+    run() {
+        setInterval(() => {
+            this.checkCollisions();
+            this.throwableObjects();
+
+        }, 200);
+    }
+    throwableObjects() {
+        if (this.keyboard.THROUGH) {
+            let bottle = new ThrowableObjects(this.character.x, this.character.y);
+            this.throwableObjects.push(bottle);
+        }
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach(enemy => {
+            if (this.character.isColliding(enemy)) {
+                this.character.isHit();
+                this.statusBar.setPercentage(this.character.hitPoints)
+            }
+        });
+    }
+  setBackgroundObjects() {
         this.backgroundObjects
         for (let i = 0; i < array.length; i++) {
             const element = array[i];
 
         }
-    }
-
-    setWorld() {
-        this.character.world = this;      //passing world variables to character fx "keyboard"
-    }
-    checkCollision() {
-        setInterval(() => {
-            this.level.enemies.forEach(enemy => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.isHit();
-                    this.statusBar.setPercentage(this.character.hitPoints)
-                }
-            });
-        }, 200);
     }
 
     draw() {                                                                                //pay attention to the order the objects will be drawn

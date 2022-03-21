@@ -1,7 +1,7 @@
 class MovableObject extends DrawableObject {
     speed = 0.2;
     otherDirection = false;
-    seedY = 0;
+    speedY = 0;
     acceleration = 2;
     hitPoints = 100;
     lastHit = 0;
@@ -9,15 +9,20 @@ class MovableObject extends DrawableObject {
 
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround() || this.seedY > 0) {       // isAboveGround so gravity pulls Pepe down or Jumps so he can fly up and later gets pulled down
-                this.y -= this.seedY;
-                this.seedY -= this.acceleration;
+            if (this.isAboveGround() || this.speedY > 0) {       // isAboveGround so gravity pulls Pepe down or Jumps so he can fly up and later gets pulled down
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
             }
         }, 1000 / 25);
     }
 
     isAboveGround() {                // to be used in different functions in fx jump function/graphic swap etc.
-        return this.y < 115;
+        if (this instanceof ThrowableObjects) { //ThrowableObjects should always fall down
+            return true;
+        } else {
+            return this.y < 115;    // all others should not leave the level
+        }
+       
     }
 
     
@@ -67,7 +72,7 @@ class MovableObject extends DrawableObject {
     }
 
     jump() {
-        this.seedY = 25;
+        this.speedY = 25;
     }
 
 
