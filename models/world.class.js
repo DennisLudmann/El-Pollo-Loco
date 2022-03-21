@@ -8,7 +8,7 @@ class World {
     keyboard;
     camera_x;
     statusBar = new StatusBar();
-    throwableObjects = [new ThrowableObjects()];
+    throwableObjects = [];
 
 
     constructor(canvas, keyboard) {
@@ -27,13 +27,13 @@ class World {
     run() {
         setInterval(() => {
             this.checkCollisions();
-            this.throwableObjects();
+            this.checkThrowableObjects();
 
         }, 200);
     }
-    throwableObjects() {
+    checkThrowableObjects() {
         if (this.keyboard.THROUGH) {
-            let bottle = new ThrowableObjects(this.character.x, this.character.y);
+            let bottle = new ThrowableObjects(this.character.x + 55, this.character.y + 150);
             this.throwableObjects.push(bottle);
         }
     }

@@ -1,18 +1,16 @@
 class ThrowableObjects extends MovableObject{
 
-constructor(){
+constructor(x, y){      // checkThrowableObjects adds location of character to bottle
     super().loadImage('img/7.Marcadores/Icono/Botella.png');
-    this.x = 100;
-    this.y = 100;
+    this.x = x;
+    this.y = y;
     this.height = 70;
     this.width = 50;    
-    this.throw(100, 150);
+    this.throw();
 
 }
 
-throw(x, y){
-    this.x = x;
-    this.y = y;
+throw(){
     this.speedY = 25;
     this.applyGravity();
     setInterval(() => {
