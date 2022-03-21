@@ -10,7 +10,9 @@ function init(){
    console.log('My character is', world.character);
    console.log('My character is', world.enemies);
 }
-
+function fullScreen(){
+    canvas.requestFullscreen();
+}
 // detect keyboard interaction for controls 
 window.addEventListener("keydown", (e) => {     // for arrow and "wasd" keys
     if (e.keyCode == 39 || e.keyCode == 68) {
