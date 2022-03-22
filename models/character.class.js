@@ -51,9 +51,10 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGE_DYING);
         this.loadImages(this.IMAGE_HURT);
         this.applyGravity();
+       
         this.animate();
     }
-
+    
     animate() {
 
         setInterval(() => {
@@ -91,7 +92,7 @@ class Character extends MovableObject {
                     this.playAnimation(this.IMAGE_WALKING);
                 }
             }
-        }, 50);
+        }, 75);
 
 
     }
