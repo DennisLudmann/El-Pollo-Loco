@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 
     <script src="models/drawable-object.class.js"></script>
     <script src="models/status-bar.class.js"></script>
@@ -22,13 +25,19 @@
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body onload="init()">
-    <h1>EL POLLO LOCO</h1>
+
+<body>
+    <span>
+        <h1>EL POLLO LOCO</h1>
+        <p>some text that is hidden in a sec but then I neededxxxxxxxxxxxxxxxxxxxxxxx</p>
+    </span>
 
     <canvas id="canvas" width="720" height="480">
 
 
     </canvas>
+    <button onclick="init() ">START</button>
     <button onclick="fullScreen()">MAX</button>
 </body>
+
 </html>
