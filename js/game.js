@@ -9,6 +9,7 @@ function init(){
 
    console.log('My character is', world.character);
    console.log('My character is', world.enemies);
+   this.initLevel();
 }
 function fullScreen(){
     canvas.requestFullscreen();
