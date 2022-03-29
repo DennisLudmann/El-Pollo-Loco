@@ -6,7 +6,6 @@ class MovableObject extends DrawableObject {
     hitPoints = 100;
     lastHit = 0;
 
-
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {       // isAboveGround so gravity pulls Pepe down or Jumps so he can fly up and later gets pulled down
