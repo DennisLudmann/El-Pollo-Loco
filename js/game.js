@@ -6,10 +6,7 @@ let keyboard = new Keyboard();
 function init(){
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);            // to pass on canvas and keyboard to the world.class
-
-   console.log('My character is', world.character);
-   console.log('My character is', world.enemies);
-   this.initLevel();
+  
 }
 function fullScreen(){
     canvas.requestFullscreen();
