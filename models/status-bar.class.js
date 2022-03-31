@@ -45,6 +45,7 @@ class StatusBar extends DrawableObject {
     }
 
     setBottleBar(){
+        this.x = 300;
         let path = this.IMAGES_BOTTLEBAR[0];         
         this.img = this.imageCache[path];
     }
