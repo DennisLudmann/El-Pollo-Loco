@@ -1,4 +1,4 @@
-class Bottlebar extends DrawableObject {
+class BottleBar extends DrawableObject {
    
     totalbottles = 0;
     x = 300;

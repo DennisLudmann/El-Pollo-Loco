@@ -8,6 +8,7 @@ class World {
     keyboard;
     camera_x;
     statusBar = new StatusBar();
+    bottleBar = new BottleBar();
     throwableObjects = [];
 
 
@@ -62,6 +63,7 @@ class World {
         //--------------------- to be used for static objects
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBar);
+        this.addToMap(this.bottleBar);
         this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
 
         this.addToMap(this.character);      //is not an array, so no need for "forEach"
