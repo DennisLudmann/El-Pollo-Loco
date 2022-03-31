@@ -8,20 +8,8 @@ class StatusBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador vida/azul/80_.png',
         'img/7.Marcadores/Barra/Marcador vida/azul/100_.png'
     ];
-
-    IMAGES_COINBAR = [
-        'img/7.Marcadores/Barra/Marcador moneda/azul/0_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/20_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/40_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/60_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/80_.png',
-        'img/7.Marcadores/Barra/Marcador moneda/azul/100_.png'
-    ];
-
-    percentage = 100;
-    totalcoins = 0;
+    percentage;
     
-
     constructor(){
         super();
         this.loadImages(this.IMAGES_HITPOINTS);
@@ -29,15 +17,14 @@ class StatusBar extends DrawableObject {
         this.y = 0;
         this.height = 50;
         this.width = 170;
-        this.setPercentage(100);                //so the img is set from the beginning
+        this.setPercentage(61);                //so the img is set from the beginning
         }
-
-   
 
     setPercentage(percentage){
         this.percentage = percentage;   // 0, ... 5
         let path = this.IMAGES_HITPOINTS[this.resolveImageIndex()];         
         this.img = this.imageCache[path];
+        console.log(percentage);
     }
 
     resolveImageIndex(){                    // to change image not on hit count but when % are reached 
