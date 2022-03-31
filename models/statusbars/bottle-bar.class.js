@@ -1,7 +1,7 @@
 class BottleBar extends DrawableObject {
    
     totalbottles = 0;
-    x = 300;
+    x = 230;
     y = 0;
     height = 50;
     width = 170;
