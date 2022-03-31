@@ -62,7 +62,6 @@ class MovableObject extends DrawableObject {
         this.x -= this.speed;
     }
 
-
     playAnimation(images) {
         let i = this.currentImage % images.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
         let path = images[i];

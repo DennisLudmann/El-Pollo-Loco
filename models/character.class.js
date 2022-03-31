@@ -41,6 +41,31 @@ class Character extends MovableObject {
         'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-43.png'
     ];
 
+    IMAGE_SHORT_IDLE = [
+        "img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/2.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/3.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/4.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/5.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/6.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/7.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/8.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/9.IDLE/IDLE",
+        "img/2.Secuencias_Personaje-Pepe-corrección/10.IDLE/IDLE"
+    ];
+    IMAGE_LONG_IDLE = [
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-11.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-12.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-13.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-14.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-15.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-16.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-17.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-18.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-19.png',
+        'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-20.png'
+    ];
+
     world;
     walking_sound = new Audio('audio/walking.mp3');
 
@@ -50,6 +75,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGE_JUMPING);
         this.loadImages(this.IMAGE_DYING);
         this.loadImages(this.IMAGE_HURT);
+        this.loadImages(this.IMAGE_SHORT_IDLE);
         this.applyGravity();
        
         this.animate();
@@ -94,7 +120,8 @@ class Character extends MovableObject {
             }
         }, 75);
 
-
+        	//!isAboveGround and no moving is active execute short idle
+            // if game starts or he didnt move for 4sek. execute long idle
     }
 
 
