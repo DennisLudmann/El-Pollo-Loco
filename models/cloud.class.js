@@ -9,8 +9,6 @@ class Cloud extends MovableObject {
     ];
     constructor() {      // you need super to manipulate a method (not a variable like x)
         super().loadImage('img/5.Fondo/Capas/4.nubes/1.png');
-        
-       //this.loadImage(this.IMAGE_CLOUDS);
         this.x = 0 + Math.random() * 1000;
         this.animate();
     }
