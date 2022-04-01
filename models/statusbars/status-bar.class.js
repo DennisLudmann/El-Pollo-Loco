@@ -8,15 +8,16 @@ class StatusBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador vida/azul/80_.png',
         'img/7.Marcadores/Barra/Marcador vida/azul/100_.png'
     ];
+    x = 10;
+    y = 0;
+    height = 50;
+    width = 170;
     percentage;
     
     constructor(){
         super();
         this.loadImages(this.IMAGES_HITPOINTS);
-        this.x = 10;
-        this.y = 0;
-        this.height = 50;
-        this.width = 170;
+        
         this.setPercentage(61);                //so the img is set from the beginning
         }
 
