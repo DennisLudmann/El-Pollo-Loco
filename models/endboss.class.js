@@ -37,7 +37,6 @@ class Endboss extends MovableObject {
     animate() {
         setInterval(() => {
             this.number = Math.random();
-            debugger;
             if (this.number < 0.15 && !this.isAboveGround()) {
                 this.jump();
             }

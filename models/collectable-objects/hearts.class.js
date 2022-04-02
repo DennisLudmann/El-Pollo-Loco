@@ -1,0 +1,3 @@
+class Hearts extends MovableObject {
+
+}
