@@ -1,9 +1,4 @@
 class Endboss extends MovableObject {
-    height = 360;
-    width = 230;
-    x = 719;    //719 * 4;
-    y = 200;
-   
 
     IMAGE_WALKING = [
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png',
@@ -16,25 +11,44 @@ class Endboss extends MovableObject {
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G12.png'
 
     ];
+    IMAGE_ALERT = [
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G13.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G14.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G15.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G16.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G17.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G18.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G19.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G20.png'
+    ];
+    height = 360;
+    width = 230;
+    x = 719;    //719 * 4;
+    y = 90;
 
-  
-constructor(){    
-    super().loadImage(this.IMAGE_WALKING[0]);
-    this.loadImages(this.IMAGE_WALKING);
-    this.applyGravity();
-    this.animate();
-}
-animate(){
-    
-    setInterval(() => {
-        this.playAnimation(this.IMAGE_WALKING);
-        console.log(speedY);
+    constructor() {
+        super().loadImage(this.IMAGE_WALKING[0]);
+        this.loadImages(this.IMAGE_WALKING);
+        this.loadImages(this.IMAGE_ALERT);
+        this.applyGravity();
+        this.animate();
+
+    }
+    animate() {
+
+        setInterval(() => {
+            this.playAnimation(this.IMAGE_WALKING);
+
         }, 180);
-      
-        this.jump();
-       
-    
-   }
+        setInterval(() => {
+            this.jump();
+            setInterval(() => {
+                this.playAnimation(this.IMAGE_ALERT);
+            }, 180);
+        }, 2500);
+
+
+    }
 
 
 }

@@ -18,18 +18,18 @@ class MovableObject extends DrawableObject {
     isAboveGround() {                // to be used in different functions in fx jump function/graphic swap etc.
         if (this instanceof ThrowableObjects) { //ThrowableObjects should always fall down
             return true;
-        } 
-        else if (this instanceof Endboss) {
-            return this.y < 80;
-        } 
+        }
+        else if (this instanceof Endboss) {     // Endboss is bigger so he needs other coordinates
+            return this.y < 90;
+        }
         else {
             return this.y < 115;    // all others should not leave the level
         }
-       
+
     }
 
-    
-   
+
+
     // character.isColliding(chicken)
     isColliding(mo) {                                    //if character is checking
         return this.x + this.width > mo.x &&            // compares top right character with top left enemy - collisionbox
