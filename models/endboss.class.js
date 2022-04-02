@@ -23,7 +23,7 @@ class Endboss extends MovableObject {
     ];
     height = 360;
     width = 230;
-    x = 719;    //719 * 4;
+    x = 719 * 4;
     y = 90;
 
     constructor() {
@@ -35,20 +35,18 @@ class Endboss extends MovableObject {
 
     }
     animate() {
-
         setInterval(() => {
-            this.playAnimation(this.IMAGE_WALKING);
-
-        }, 180);
-        setInterval(() => {
-            this.jump();
-            setInterval(() => {
+            this.number = Math.random();
+            debugger;
+            if (this.number < 0.15 && !this.isAboveGround()) {
+                this.jump();
+            }
+                if (!this.isAboveGround()) {
+                this.playAnimation(this.IMAGE_WALKING);
+            }
+            if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGE_ALERT);
-            }, 180);
-        }, 2500);
-
-
+            }
+        }, 185);
     }
-
-
 }
