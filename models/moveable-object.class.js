@@ -18,7 +18,11 @@ class MovableObject extends DrawableObject {
     isAboveGround() {                // to be used in different functions in fx jump function/graphic swap etc.
         if (this instanceof ThrowableObjects) { //ThrowableObjects should always fall down
             return true;
-        } else {
+        } 
+        else if (this instanceof Endboss) {
+            return this.y < 80;
+        } 
+        else {
             return this.y < 115;    // all others should not leave the level
         }
        

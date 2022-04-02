@@ -6,6 +6,8 @@ class ThrowableObjects extends MovableObject {
         'img/6.botella/Rotación/Mesa de trabajo 1 copia 6.png',
         'img/6.botella/Rotación/Mesa de trabajo 1 copia 3.png'
     ];
+    isThrown;
+
     constructor(x, y) {      // checkThrowableObjects adds location of character to bottle
         super().loadImage('img/6.botella/Rotación/Mesa de trabajo 1 copia 3.png');
         this.loadImages(this.IMAGE_BOTTLEROTATION);
