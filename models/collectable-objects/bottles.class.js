@@ -14,10 +14,9 @@ class Bottle extends MovableObject {
         this.loadImages(this.IMAGE_AIR);
         this.loadImages(this.IMAGE_GROUND);
        // this.animate();
-        this.x = 500;
-        this.y = 300;
-       
-      
+        this.x = 300 + Math.random() *2500;                 //to have a good range of coordinates were the bottle spawn
+        this.y = 300 - Math.random() *200;
+             
     }
     animate() {
         
