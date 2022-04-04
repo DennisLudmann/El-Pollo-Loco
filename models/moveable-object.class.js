@@ -6,9 +6,16 @@ class MovableObject extends DrawableObject {
     hitPoints = 61;
     lastHit = 0;
 
+    playAnimation(images) {
+        let i = this.currentImage % images.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
+
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround() || this.speedY > 0) {       // isAboveGround so gravity pulls Pepe down or Jumps so he can fly up and later gets pulled down
+            if (this.isAboveGround() || this.speedY > 0) {       // isAboveGround so gravity pulls anything that is temporary airborn down
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
@@ -25,10 +32,7 @@ class MovableObject extends DrawableObject {
         else {
             return this.y < 115;    // all others should not leave the level
         }
-
     }
-
-
 
     // character.isColliding(chicken)
     isColliding(mo) {                                    //if character is checking
@@ -64,13 +68,6 @@ class MovableObject extends DrawableObject {
     }
     moveLeft() {
         this.x -= this.speed;
-    }
-
-    playAnimation(images) {
-        let i = this.currentImage % images.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
-        let path = images[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
     }
 
     jump() {

@@ -33,10 +33,11 @@ class World {
 
         }, 200);
     }
-    checkThrowableObjects() {
+    checkThrowableObjects() {       // && bottlecounter > 0;
         if (this.keyboard.THROUGH) {
             let bottle = new ThrowableObjects(this.character.x + 55, this.character.y + 150);
             this.throwableObjects.push(bottle);
+            // bottlecounter--;
         }
     }
 
@@ -47,7 +48,15 @@ class World {
                 this.statusBar.setPercentage(this.character.hitPoints)
             }
         });
+        this.level.bottles.forEach(bottle => {          // remove collectables when colliding
+            if (this.character.isColliding(bottle)) {
+                let index = this.level.bottles.indexOf(bottle);
+                this.level.bottles.splice(index, 1);
+                
+            }
+        });
     }
+   
     setBackgroundObjects() {
         this.backgroundObjects
         for (let i = 0; i < array.length; i++) {
@@ -68,13 +77,13 @@ class World {
         this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
 
-        this.addToMap(this.character);      //is not an array, so no need for "forEach"
+        this.addToMap(this.character);      //is not an array, so "forEach" is not working
 
         this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.throwableObjects);
-        
+
 
         this.ctx.translate(-this.camera_x, 0);
 
