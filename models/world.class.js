@@ -20,9 +20,9 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-            }
+    }
 
-  
+
     setWorld() {
         this.character.world = this;      //passing world variables to character fx "keyboard"
     }
@@ -48,7 +48,7 @@ class World {
             }
         });
     }
-  setBackgroundObjects() {
+    setBackgroundObjects() {
         this.backgroundObjects
         for (let i = 0; i < array.length; i++) {
             const element = array[i];
@@ -69,9 +69,12 @@ class World {
         this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
 
         this.addToMap(this.character);      //is not an array, so no need for "forEach"
+
+        this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.throwableObjects);
+        
 
         this.ctx.translate(-this.camera_x, 0);
 
