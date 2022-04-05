@@ -1,10 +1,5 @@
 class Character extends MovableObject {
 
-    x = 50;
-    y = 0; // 133 is ground
-    height = 310;
-    width = 100;
-    speed = 8;
     IMAGE_WALKING = [
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-22.png',
@@ -66,6 +61,11 @@ class Character extends MovableObject {
         'img/2.Secuencias_Personaje-Pepe-corrección/1.IDLE/LONG_IDLE/I-20.png'
     ];
 
+    x = 50;
+    y = 0; // 133 is ground
+    height = 310;
+    width = 100;
+    speed = 8;
     world;
     walking_sound = new Audio('audio/walking.mp3');
 
@@ -77,12 +77,10 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGE_HURT);
         this.loadImages(this.IMAGE_SHORT_IDLE);
         this.applyGravity();
-       
         this.animate();
     }
-    
-    animate() {
 
+    animate() {
         setInterval(() => {
             this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -98,7 +96,6 @@ class Character extends MovableObject {
             if (this.world.keyboard.JUMP && !this.isAboveGround()) {         // Jump function !negate
                 this.jump();
             }
-
             this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
         }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
 
@@ -120,8 +117,8 @@ class Character extends MovableObject {
             }
         }, 75);
 
-        	//!isAboveGround and no moving is active execute short idle
-            // if game starts or he didnt move for 4sek. execute long idle
+        //!isAboveGround and no moving is active execute short idle
+        // if game starts or he didnt move for 4sek. execute long idle
     }
 
 
