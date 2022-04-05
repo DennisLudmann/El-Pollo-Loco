@@ -6,6 +6,7 @@ class DrawableObject {
     width = 100;
     imageCache = {};
     currentImage = 0;
+    percentage = 61;
 
     loadImage(path) {
 
@@ -34,4 +35,22 @@ class DrawableObject {
         }
     }
 
+    increaseBar(percentage){
+        this.percentage = percentage + 20;
+        if (this.percentage > 100) {
+            return this.percentage = 100;
+        }
+        percentage = this.percentage;
+        return this.percentage;
+    }
+    
+    sendPercentage(){
+        debugger;
+        console.log (this.percentage);
+       return this.percentage;
+    }
+
+    changePercentage(newpercentage){
+        percentage = this.newpercentage;
+    }
 }

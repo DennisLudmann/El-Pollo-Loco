@@ -6,14 +6,14 @@ class BottleBar extends DrawableObject {
     height = 50;
     width = 170;
     IMAGES_BOTTLEBAR = [
-        'img/7.Marcadores/Barra/Marcador_botella/Azul/0_.png',
-        'img/7.Marcadores/Barra/Marcador_botella/Azul/20_.png',
-        'img/7.Marcadores/Barra/Marcador_botella/Azul/40_.png',
-        'img/7.Marcadores/Barra/Marcador_botella/Azul/60_.png',
-        'img/7.Marcadores/Barra/Marcador_botella/Azul/80_.png',
-        'img/7.Marcadores/Barra/Marcador_botella/Azul/100_.png'
+        'img/7.Marcadores/Barra/Marcador_botella/Verde/0_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Verde/20_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Verde/40_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Verde/60_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Verde/80_.png',
+        'img/7.Marcadores/Barra/Marcador_botella/Verde/100_.png'
     ];
-
+  
     constructor() {
         super();
         this.loadImages(this.IMAGES_BOTTLEBAR);

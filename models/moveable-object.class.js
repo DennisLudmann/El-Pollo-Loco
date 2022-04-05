@@ -3,7 +3,7 @@ class MovableObject extends DrawableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 2;
-    hitPoints = 61;
+    hitPoints = 58;
     lastHit = 0;
 
     playAnimation(images) {
@@ -41,8 +41,13 @@ class MovableObject extends DrawableObject {
             this.x < mo.x &&                                // compares top left character with top tight enemy
             this.y < mo.y + mo.height;                      // compares bottom left character with right bottom of enemy
     }
+    setHitPoints() {
+        this.sendPercentage(this.hitPoints);
+        // return this.hitPoints;
+    }
 
     isHit() {
+        this.setHitPoints();
         this.hitPoints -= 3;
         if (this.hitPoints < 0) {
             this.hitPoints = 0;
@@ -65,7 +70,7 @@ class MovableObject extends DrawableObject {
         this.x += this.speed;
         this.otherDirection = false;
     }
-    
+
     moveLeft() {
         this.x -= this.speed;
     }
@@ -74,6 +79,4 @@ class MovableObject extends DrawableObject {
         this.speedY = 25;
     }
 
-
 }
-
