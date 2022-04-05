@@ -20,6 +20,12 @@ level1 = new Level(
         new Bottle(),
         new Bottle()
     ],
+    [ 
+        new Heart(),
+        new Heart(),
+        new Heart(),
+        new Heart()
+    ],
     [                       //passing on (img, x)
         new BackgroundObject('img/5.Fondo/Capas/5.cielo_1920-1080px.png', -719),
         new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/2.png', -719),

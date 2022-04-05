@@ -11,7 +11,7 @@ class World {
     bottleBar = new BottleBar();
     coinBar = new CoinBar();
     throwableObjects = [];
-
+    bottlesCollected;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -52,7 +52,12 @@ class World {
             if (this.character.isColliding(bottle)) {
                 let index = this.level.bottles.indexOf(bottle);
                 this.level.bottles.splice(index, 1);
-                
+            }
+        });
+        this.level.hearts.forEach(heart => {          // remove collectables when colliding
+            if (this.character.isColliding(heart)) {
+                let index = this.level.hearts.indexOf(heart);
+                this.level.hearts.splice(index, 1);
             }
         });
     }
@@ -80,6 +85,7 @@ class World {
         this.addToMap(this.character);      //is not an array, so "forEach" is not working
 
         this.addObjectToMap(this.level.bottles);
+        this.addObjectToMap(this.level.hearts);
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.throwableObjects);

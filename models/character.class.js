@@ -99,7 +99,6 @@ class Character extends MovableObject {
             this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
         }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
 
-
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGE_DYING);
