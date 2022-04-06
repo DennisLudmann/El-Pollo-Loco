@@ -56,7 +56,8 @@ class World {
         });
         this.level.hearts.forEach(heart => {          // remove collectables when colliding
             if (this.character.isColliding(heart)) {
-                this.statusBar.healCharacter();
+                this.character.isHealed();
+                this.statusBar.setPercentage(this.character.hitPoints)
                 let index = this.level.hearts.indexOf(heart);
                 this.level.hearts.splice(index, 1);
             }

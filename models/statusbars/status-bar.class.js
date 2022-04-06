@@ -28,12 +28,6 @@ class StatusBar extends DrawableObject {
         console.log(percentage);
     }
 
-    healCharacter(){
-        this.increaseBar(this.percentage);      // adds 20 to health
-        this.setPercentage(this.percentage);    // displays the change
-        // percentage = this.percentage;
-    }
-
     resolveImageIndex(){                    // to change image not on hit count but when % are reached 
         if (this.percentage == 100) {
             return 5;                       // returns the number of the image in array (5 is full HP)
