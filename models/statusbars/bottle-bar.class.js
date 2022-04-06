@@ -9,8 +9,8 @@ class BottleBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador_botella/Verde/100_.png'
     ];
 
-    x = 230;
-    y = 0;
+    x = 10;
+    y = 40;
     height = 50;
     width = 170;
     totalBottles;

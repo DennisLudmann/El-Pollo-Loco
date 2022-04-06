@@ -1,7 +1,6 @@
 class World {
 
     character = new Character();
-
     level = level1;
     canvas;
     ctx;
@@ -9,7 +8,7 @@ class World {
     camera_x;
     statusBar = new StatusBar();
     bottleBar = new BottleBar();
-    coinBar = new CoinBar();
+   // coinBar = new CoinBar();
     throwableObjects = [];
     bottlesCollected;
 
@@ -25,11 +24,11 @@ class World {
     setWorld() {
         this.character.world = this;      //passing world variables to character fx "keyboard"
     }
+
     run() {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowableObjects();
-
         }, 200);
     }
 
@@ -49,9 +48,8 @@ class World {
                 this.statusBar.setPercentage(this.character.hitPoints)
             }
         });
-        this.level.bottles.forEach(bottle => {          // remove collectables when colliding
+        this.level.bottles.forEach(bottle => {          // remove collectables only when colliding
             if (this.character.totalBottles < 5) {
-
                 if (this.character.isColliding(bottle)) {
                     this.character.isCollected();
                     this.bottleBar.setTotalbottles(this.character.totalBottles)
@@ -60,8 +58,7 @@ class World {
                 }
             }
         });
-
-        this.level.hearts.forEach(heart => {          // remove collectables when colliding
+        this.level.hearts.forEach(heart => {          // remove collectables only when colliding
             if (this.character.hitPoints < 100) {
                 if (this.character.isColliding(heart)) {
                     this.character.isHealed();
@@ -71,6 +68,12 @@ class World {
                 }
             }
         });
+     /*   this.world.throwableObjects.forEach(throwableObjects => {
+            if (this.enemies.isColliding(enemy)) {
+                this.character.isHit();
+                this.statusBar.setPercentage(this.character.hitPoints)
+            }
+        });*/
     }
 
     setBackgroundObjects() {
@@ -90,7 +93,7 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBar);
         this.addToMap(this.bottleBar);
-        this.addToMap(this.coinBar);
+        //this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
      
         this.addObjectToMap(this.level.bottles);
