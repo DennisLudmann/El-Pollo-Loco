@@ -58,8 +58,20 @@ class MovableObject extends DrawableObject {
             return this.hitPoints = 100;
         }
     }
+
     isCollected() {
         this.totalBottles += 1;
+        if (this.totalBottles > 5) {
+            this.totalBottles = 5;
+        }
+        console.log(this.totalBottles)
+    }
+
+    isThrown() {
+        this.totalBottles -= 1;
+        if (this.totalBottles < 0) {
+            this.totalBottles = 0;
+        }
         console.log(this.totalBottles)
     }
 

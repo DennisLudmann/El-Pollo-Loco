@@ -21,17 +21,10 @@ class BottleBar extends DrawableObject {
         this.setTotalbottles(0);
     }
 
-    setBottleBar() {
-        let path = this.IMAGES_BOTTLEBAR[0];
-        this.img = this.imageCache[path];
-    }
-
     setTotalbottles(totalBottles){
-        debugger;
         this.totalBottles = totalBottles;   // 0, ... 5
         let path = this.IMAGES_BOTTLEBAR[this.totalBottles];         
         this.img = this.imageCache[path];
-        console.log(totalBottles);
     }
 
    

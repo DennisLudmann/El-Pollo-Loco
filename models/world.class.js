@@ -32,11 +32,13 @@ class World {
 
         }, 200);
     }
-    checkThrowableObjects() {       // && bottlecounter > 0;
-        if (this.keyboard.THROUGH) {
+
+    checkThrowableObjects() {
+        if (this.keyboard.THROUGH && this.character.totalBottles > 0) {     // only throw when you have a bottle collected
+            this.character.isThrown();
             let bottle = new ThrowableObjects(this.character.x + 55, this.character.y + 150);
             this.throwableObjects.push(bottle);
-            // bottlecounter--;
+            this.bottleBar.setTotalbottles(this.character.totalBottles);
         }
     }
 
@@ -48,23 +50,29 @@ class World {
             }
         });
         this.level.bottles.forEach(bottle => {          // remove collectables when colliding
-            if (this.character.isColliding(bottle)) {
-                this.character.isCollected();
-                this.bottleBar.setTotalbottles(this.character.totalBottles)
-                let index = this.level.bottles.indexOf(bottle);
-                this.level.bottles.splice(index, 1);
+            if (this.character.totalBottles < 5) {
+
+                if (this.character.isColliding(bottle)) {
+                    this.character.isCollected();
+                    this.bottleBar.setTotalbottles(this.character.totalBottles)
+                    let index = this.level.bottles.indexOf(bottle);
+                    this.level.bottles.splice(index, 1);
+                }
             }
         });
+
         this.level.hearts.forEach(heart => {          // remove collectables when colliding
-            if (this.character.isColliding(heart)) {
-                this.character.isHealed();
-                this.statusBar.setPercentage(this.character.hitPoints)
-                let index = this.level.hearts.indexOf(heart);
-                this.level.hearts.splice(index, 1);
+            if (this.character.hitPoints < 100) {
+                if (this.character.isColliding(heart)) {
+                    this.character.isHealed();
+                    this.statusBar.setPercentage(this.character.hitPoints)
+                    let index = this.level.hearts.indexOf(heart);
+                    this.level.hearts.splice(index, 1);
+                }
             }
         });
     }
-   
+
     setBackgroundObjects() {
         this.backgroundObjects
         for (let i = 0; i < array.length; i++) {
@@ -84,14 +92,14 @@ class World {
         this.addToMap(this.bottleBar);
         this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
-
-        this.addToMap(this.character);      //is not an array, so "forEach" is not working
-
+     
         this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.hearts);
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.throwableObjects);
+
+        this.addToMap(this.character);      //is not an array, so "forEach" is not working
 
         this.ctx.translate(-this.camera_x, 0);
 
