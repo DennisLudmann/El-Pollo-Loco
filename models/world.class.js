@@ -22,7 +22,6 @@ class World {
         this.run();
     }
 
-
     setWorld() {
         this.character.world = this;      //passing world variables to character fx "keyboard"
     }
@@ -50,6 +49,8 @@ class World {
         });
         this.level.bottles.forEach(bottle => {          // remove collectables when colliding
             if (this.character.isColliding(bottle)) {
+                this.character.isCollected();
+                this.bottleBar.setTotalbottles(this.character.totalBottles)
                 let index = this.level.bottles.indexOf(bottle);
                 this.level.bottles.splice(index, 1);
             }
@@ -92,9 +93,7 @@ class World {
         this.addObjectToMap(this.level.clouds);
         this.addObjectToMap(this.throwableObjects);
 
-
         this.ctx.translate(-this.camera_x, 0);
-
 
         let self = this;            // it doesnt accept this. in the function so you call this something else and parse in that something else
         requestAnimationFrame(function () {
@@ -126,6 +125,7 @@ class World {
         this.ctx.scale(-1, 1);                  // turn the picture on the y axes (mirror)
         mo.x = mo.x * -1;
     }
+
     mirrorImageReverse(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();

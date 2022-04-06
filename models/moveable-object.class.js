@@ -5,6 +5,7 @@ class MovableObject extends DrawableObject {
     acceleration = 2;
     hitPoints = 61;
     lastHit = 0;
+    totalBottles = 0;
 
     playAnimation(images) {
         let i = this.currentImage % images.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
@@ -56,6 +57,10 @@ class MovableObject extends DrawableObject {
         if (this.hitPoints > 100) {
             return this.hitPoints = 100;
         }
+    }
+    isCollected() {
+        this.totalBottles += 1;
+        console.log(this.totalBottles)
     }
 
     isHurt() {
