@@ -8,12 +8,11 @@ class DrawableObject {
     currentImage = 0;
     percentage = 61;
 
-    loadImage(path) {
-
+    loadImage(path) {               // function for single
         this.img = new Image();
         this.img.src = path;
     }
-
+                                    // function for multiple
     loadImages(arr) {                // pulling the info from fx character constructor
         arr.forEach((path) => {
             let img = new Image();
