@@ -12,16 +12,16 @@ class DrawableObject {
         this.img = new Image();
         this.img.src = path;
     }
-                                    // function for multiple
+    // function for multiple
     loadImages(arr) {                // pulling the info from fx character constructor
         arr.forEach((path) => {
             let img = new Image();
             img.src = path;
-            this.imageCache[path] = img;    
+            this.imageCache[path] = img;
         });
     }
     draw(ctx) {
-             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);     // add an image "mirrored" if otherDirection was true
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);     // add an image "mirrored" if otherDirection was true
     }
     drawFrame(ctx) {
         if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {
@@ -33,4 +33,5 @@ class DrawableObject {
             ctx.stroke();
         }
     }
+    
 }

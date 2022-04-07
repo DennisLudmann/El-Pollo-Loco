@@ -3,12 +3,13 @@ let world;
 let keyboard = new Keyboard();
 
 
+
 function init(){
     canvas = document.getElementById('canvas');
     initLevel();
     world = new World(canvas, keyboard);            // to pass on canvas and keyboard to the world.class
-  
-}
+  }
+
 function fullScreen(){
     canvas.requestFullscreen();
 }

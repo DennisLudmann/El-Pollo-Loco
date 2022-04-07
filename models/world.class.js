@@ -8,9 +8,10 @@ class World {
     camera_x;
     statusBar = new StatusBar();
     bottleBar = new BottleBar();
-   // coinBar = new CoinBar();
+    // coinBar = new CoinBar();
     throwableObjects = [];
     bottlesCollected;
+    isDead = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -45,11 +46,11 @@ class World {
         this.level.enemies.forEach(enemy => {
             if (this.character.isColliding(enemy)) {
                 this.character.isHit();
-                this.statusBar.setPercentage(this.character.hitPoints)
+                this.statusBar.setPercentage(this.character.hitPoints);
             }
         });
         this.level.bottles.forEach(bottle => {          // remove collectables only when colliding
-            if (this.character.totalBottles < 5) {
+            if (this.character.totalBottles < 5) {      // dont collect when full
                 if (this.character.isColliding(bottle)) {
                     this.character.isCollected();
                     this.bottleBar.setTotalbottles(this.character.totalBottles)
@@ -59,7 +60,7 @@ class World {
             }
         });
         this.level.hearts.forEach(heart => {          // remove collectables only when colliding
-            if (this.character.hitPoints < 100) {
+            if (this.character.hitPoints < 100) {       // dont collect when full
                 if (this.character.isColliding(heart)) {
                     this.character.isHealed();
                     this.statusBar.setPercentage(this.character.hitPoints)
@@ -68,12 +69,12 @@ class World {
                 }
             }
         });
-     /*   this.world.throwableObjects.forEach(throwableObjects => {
-            if (this.enemies.isColliding(enemy)) {
-                this.character.isHit();
-                this.statusBar.setPercentage(this.character.hitPoints)
-            }
-        });*/
+        /*   this.world.throwableObjects.forEach(throwableObjects => {
+               if (this.enemies.isColliding(enemy)) {
+                   this.character.isHit();
+                   this.statusBar.setPercentage(this.character.hitPoints)
+               }
+           });*/
     }
 
     setBackgroundObjects() {
@@ -84,7 +85,8 @@ class World {
         }
     }
 
-    draw() {                                                                                //pay attention to the order the objects will be drawn
+    draw() {   
+                                                                                                        //pay attention to the order the objects will be drawn
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);                                           // needs two parameters to move (x,y)
         this.addObjectToMap(this.level.backgroundObjects);
@@ -95,7 +97,7 @@ class World {
         this.addToMap(this.bottleBar);
         //this.addToMap(this.coinBar);
         this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
-     
+
         this.addObjectToMap(this.level.bottles);
         this.addObjectToMap(this.level.hearts);
         this.addObjectToMap(this.level.enemies);
@@ -110,6 +112,7 @@ class World {
         requestAnimationFrame(function () {
             self.draw();                // Draw will be called repeatetly 
         });
+    
     }
 
     addObjectToMap(objects) {
@@ -141,5 +144,5 @@ class World {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
-
+    
 }
