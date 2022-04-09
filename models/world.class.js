@@ -11,7 +11,7 @@ class World {
     // coinBar = new CoinBar();
     throwableObjects = [];
     bottlesCollected;
-    isDead = false;
+    gameIsRunning = true;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -47,6 +47,7 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.isHit();
                 this.statusBar.setPercentage(this.character.hitPoints);
+                this.gameIsRunning = false;
             }
         });
         this.level.bottles.forEach(bottle => {          // remove collectables only when colliding
@@ -86,7 +87,8 @@ class World {
     }
 
     draw() {   
-                                                                                                        //pay attention to the order the objects will be drawn
+              if (this.gameIsRunning == true) {
+                                                                                //pay attention to the order the objects will be drawn
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);                                           // needs two parameters to move (x,y)
         this.addObjectToMap(this.level.backgroundObjects);
@@ -112,6 +114,7 @@ class World {
         requestAnimationFrame(function () {
             self.draw();                // Draw will be called repeatetly 
         });
+    } 
     
     }
 
