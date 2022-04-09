@@ -8,7 +8,7 @@ class World {
     camera_x;
     statusBar = new StatusBar();
     bottleBar = new BottleBar();
-    // coinBar = new CoinBar();
+    // coinBar = new CoinBar();     doesnt add any value to current game
     throwableObjects = [];
     bottlesCollected;
     gameIsRunning = true;
@@ -30,7 +30,17 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowableObjects();
+            this.gameOver();
         }, 200);
+    }
+
+    gameOver() {
+        if (this.character.hitPoints == 0) {
+            setTimeout(() => {
+                this.gameIsRunning = false;
+            }, 2500);
+            
+        }
     }
 
     checkThrowableObjects() {
@@ -47,7 +57,6 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.isHit();
                 this.statusBar.setPercentage(this.character.hitPoints);
-                this.gameIsRunning = false;
             }
         });
         this.level.bottles.forEach(bottle => {          // remove collectables only when colliding
@@ -86,36 +95,36 @@ class World {
         }
     }
 
-    draw() {   
-              if (this.gameIsRunning == true) {
-                                                                                //pay attention to the order the objects will be drawn
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.translate(this.camera_x, 0);                                           // needs two parameters to move (x,y)
-        this.addObjectToMap(this.level.backgroundObjects);
+    draw() {
+        if (this.gameIsRunning == true) {
+            console.log(this.gameIsRunning);                                                    //pay attention to the order the objects will be drawn
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.ctx.translate(this.camera_x, 0);                                           // needs two parameters to move (x,y)
+            this.addObjectToMap(this.level.backgroundObjects);
 
-        //--------------------- to be used for static objects
-        this.ctx.translate(-this.camera_x, 0);
-        this.addToMap(this.statusBar);
-        this.addToMap(this.bottleBar);
-        //this.addToMap(this.coinBar);
-        this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
+            //--------------------- to be used for static objects
+            this.ctx.translate(-this.camera_x, 0);
+            this.addToMap(this.statusBar);
+            this.addToMap(this.bottleBar);
+            //this.addToMap(this.coinBar);
+            this.ctx.translate(this.camera_x, 0); // moving the camera/ coordinate system back and forward again
 
-        this.addObjectToMap(this.level.bottles);
-        this.addObjectToMap(this.level.hearts);
-        this.addObjectToMap(this.level.enemies);
-        this.addObjectToMap(this.level.clouds);
-        this.addObjectToMap(this.throwableObjects);
+            this.addObjectToMap(this.level.bottles);
+            this.addObjectToMap(this.level.hearts);
+            this.addObjectToMap(this.level.enemies);
+            this.addObjectToMap(this.level.clouds);
+            this.addObjectToMap(this.throwableObjects);
 
-        this.addToMap(this.character);      //is not an array, so "forEach" is not working
+            this.addToMap(this.character);      //is not an array, so "forEach" is not working
 
-        this.ctx.translate(-this.camera_x, 0);
+            this.ctx.translate(-this.camera_x, 0);
 
-        let self = this;            // it doesnt accept this. in the function so you call this something else and parse in that something else
-        requestAnimationFrame(function () {
-            self.draw();                // Draw will be called repeatetly 
-        });
-    } 
-    
+            let self = this;            // it doesnt accept this. in the function so you call this something else and parse in that something else
+            requestAnimationFrame(function () {
+                self.draw();                // Draw will be called repeatetly 
+            });
+        }
+
     }
 
     addObjectToMap(objects) {
@@ -147,5 +156,5 @@ class World {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
-    
+
 }
