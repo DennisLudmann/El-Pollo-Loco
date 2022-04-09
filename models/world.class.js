@@ -38,10 +38,15 @@ class World {
         if (this.character.hitPoints == 0) {
             setTimeout(() => {
                 this.gameIsRunning = false;
+                this.endScreen();
             }, 2500);
             
         }
     }
+    endScreen() {
+        let e = document.getElementById("endscreen");
+        e.classList.add("fade-in-image2");
+      }
 
     checkThrowableObjects() {
         if (this.keyboard.THROUGH && this.character.totalBottles > 0) {     // only throw when you have a bottle collected
@@ -96,8 +101,7 @@ class World {
     }
 
     draw() {
-        if (this.gameIsRunning == true) {
-            console.log(this.gameIsRunning);                                                    //pay attention to the order the objects will be drawn
+        if (this.gameIsRunning == true) {                                                  //pay attention to the order the objects will be drawn
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.ctx.translate(this.camera_x, 0);                                           // needs two parameters to move (x,y)
             this.addObjectToMap(this.level.backgroundObjects);

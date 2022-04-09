@@ -12,8 +12,8 @@ body {
 
 canvas {
     background-color: black;
-   /* background-image: url("img/9.Intro _ Outro Image/Start Screen/Opción 1.png");*/
-    background-image: url("img/9.Intro _ Outro Image/_Game over_ screen/2.oh no you lost!.png");
+    background-image: url("img/9.Intro _ Outro Image/Start Screen/Opción 1.png");
+    /*background-image: url("img/9.Intro _ Outro Image/_Game over_ screen/2.oh no you lost!.png");*/
     background-size: 720px 480px;
     background-repeat: no-repeat;
     border-radius: 10px;
@@ -104,6 +104,13 @@ d-none{
     100% {opacity:1;}
   }
 
+  
+.fade-in-image2 {
+    opacity:1;
+    z-index: 10;
+  }
+
+  /* leftover*/
   .fade-out-image {
     animation: fadeOut 4s;
     -webkit-animation: fadeOut 4s;
