@@ -6,6 +6,9 @@ class MovableObject extends DrawableObject {
     hitPoints = 61;
     lastHit = 0;
     totalBottles = 0;
+    bottle_sound = new Audio('audio/bottle.mp3');
+    heal_sound = new Audio('audio/vita.mp3');
+
 
     playAnimation(images) {
         let i = this.currentImage % images.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
@@ -57,6 +60,7 @@ class MovableObject extends DrawableObject {
         if (this.hitPoints > 100) {
             return this.hitPoints = 100;
         }
+        this.heal_sound.play();
     }
 
     isCollected() {
@@ -64,6 +68,7 @@ class MovableObject extends DrawableObject {
         if (this.totalBottles > 5) {
             this.totalBottles = 5;
         }
+        this.bottle_sound.play();
         console.log(this.totalBottles)
     }
 

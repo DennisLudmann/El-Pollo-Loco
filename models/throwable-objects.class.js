@@ -1,12 +1,11 @@
 class ThrowableObjects extends MovableObject {
     IMAGE_BOTTLEROTATION = [
-        
         'img/6.botella/Rotación/Mesa de trabajo 1 copia 4.png',
         'img/6.botella/Rotación/Mesa de trabajo 1 copia 5.png',
         'img/6.botella/Rotación/Mesa de trabajo 1 copia 6.png',
         'img/6.botella/Rotación/Mesa de trabajo 1 copia 3.png'
     ];
-    
+    bottle_sound = new Audio('audio/bottle.mp3');
     constructor(x, y) {      // checkThrowableObjects adds location of character to bottle
         super().loadImage('img/6.botella/Rotación/Mesa de trabajo 1 copia 3.png');
         this.loadImages(this.IMAGE_BOTTLEROTATION);
@@ -20,6 +19,7 @@ class ThrowableObjects extends MovableObject {
     throw() {
         this.speedY = 25;
         this.applyGravity();
+        this.bottle_sound.play();
         setInterval(() => {
             this.x += 13;
         }, 25);

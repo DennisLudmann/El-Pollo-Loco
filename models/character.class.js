@@ -67,7 +67,10 @@ class Character extends MovableObject {
     width = 100;
     speed = 8;
     world;
-    walking_sound = new Audio('audio/walking.mp3');
+    walking_sound = new Audio('audio/running.mp3');
+    jumping_sound = new Audio('audio/jump.mp3');
+    hurt_sound = new Audio('audio/punch.mp3');
+    victory_sound = new Audio('audio/loss.mp3');
 
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
@@ -95,6 +98,7 @@ class Character extends MovableObject {
             }
             if (this.world.keyboard.JUMP && !this.isAboveGround()) {         // Jump function !negate
                 this.jump();
+                this.jumping_sound.play();
             }
             this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
         }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
@@ -102,9 +106,15 @@ class Character extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGE_DYING);
+                this.victory_sound.play();
+             /*   setTimeout(() => {
+                    this.victory_sound.pause();
+                   
+                }, 3000);   */
             }
             else if (this.isHurt()) {
                 this.playAnimation(this.IMAGE_HURT);
+                this.hurt_sound.play();
             }
             else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGE_JUMPING);

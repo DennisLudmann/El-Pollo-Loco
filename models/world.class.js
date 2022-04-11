@@ -40,13 +40,14 @@ class World {
                 this.gameIsRunning = false;
                 this.endScreen();
             }, 2500);
-            
+           
         }
     }
+
     endScreen() {
         let e = document.getElementById("endscreen");
-        e.classList.add("fade-in-image2");
-      }
+        e.classList.add("game-over");
+    }
 
     checkThrowableObjects() {
         if (this.keyboard.THROUGH && this.character.totalBottles > 0) {     // only throw when you have a bottle collected
