@@ -12,6 +12,7 @@ class World {
     throwableObjects = [];
     bottlesCollected;
     gameIsRunning = true;
+    background_sound = new Audio('audio/backgrund-accustic.mp3');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -20,6 +21,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.background_sound.play();
     }
 
     setWorld() {
@@ -39,8 +41,8 @@ class World {
             setTimeout(() => {
                 this.gameIsRunning = false;
                 this.endScreen();
+                this.background_sound.pause();
             }, 2500);
-           
         }
     }
 
@@ -85,13 +87,18 @@ class World {
                 }
             }
         });
-        /*   this.world.throwableObjects.forEach(throwableObjects => {
-               if (this.enemies.isColliding(enemy)) {
-                   this.character.isHit();
-                   this.statusBar.setPercentage(this.character.hitPoints)
+            this.throwableObjects.forEach((throwableObject) => {
+                this.level.enemies.forEach((endboss) => {
+                    
+                    if (endboss.isColliding(throwableObject)) {
+                        console.log("dsfsdfdsgdfgdfg")
+                        //endboss.Hurt();
+                        
                }
-           });*/
-    }
+           });
+        });
+}
+
 
     setBackgroundObjects() {
         this.backgroundObjects
