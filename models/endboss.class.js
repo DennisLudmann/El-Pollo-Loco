@@ -21,6 +21,11 @@ class Endboss extends MovableObject {
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G19.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/2.Ataque/G20.png'
     ];
+    IMAGE_HURT = [
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G21.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G22.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G23.png'
+    ];
     height = 360;
     width = 230;
     x = 719 * 4;
@@ -31,6 +36,7 @@ class Endboss extends MovableObject {
         super().loadImage(this.IMAGE_WALKING[0]);
         this.loadImages(this.IMAGE_WALKING);
         this.loadImages(this.IMAGE_ALERT);
+        this.loadImages(this.IMAGE_HURT);
         this.applyGravity();
         this.animate();
 
@@ -41,9 +47,12 @@ class Endboss extends MovableObject {
             if (this.number < 0.15 && !this.isAboveGround()) {
                 this.jump();
             }
-                if (!this.isAboveGround()) {
+            if (this.bossHitPoints < 50) {
+                this.playAnimation(this.IMAGE_HURT);
+            } else
+            if (!this.isAboveGround()) {
                 this.playAnimation(this.IMAGE_WALKING);
-            }
+            }else
             if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGE_ALERT);
             }
@@ -52,12 +61,10 @@ class Endboss extends MovableObject {
 
     isHit() {
         this.bossHitPoints -= 10;
-        console.log(this.bossHitPoints)
+        console.log('BOSS :',this.bossHitPoints);
         if (this.bossHitPoints < 0) {
             this.bossHitPoints = 0;
-        } else {
-            this.lastHit = new Date().getTime();        // time as number
-        }
+        } 
     }
 
 }
