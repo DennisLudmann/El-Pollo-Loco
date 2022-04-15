@@ -9,7 +9,6 @@ class MovableObject extends DrawableObject {
     bottle_sound = new Audio('audio/bottle.mp3');
     heal_sound = new Audio('audio/vita.mp3');
 
-
     playAnimation(images) {
         let i = this.currentImage % images.length;  // (using % modulo operator) i = 0,1,2,3,4,5,0,1,2,3...
         let path = images[i];
@@ -69,7 +68,6 @@ class MovableObject extends DrawableObject {
             this.totalBottles = 5;
         }
         this.bottle_sound.play();
-        console.log(this.totalBottles)
     }
 
     isThrown() {
@@ -77,7 +75,6 @@ class MovableObject extends DrawableObject {
         if (this.totalBottles < 0) {
             this.totalBottles = 0;
         }
-        console.log(this.totalBottles)
     }
 
     isHurt() {

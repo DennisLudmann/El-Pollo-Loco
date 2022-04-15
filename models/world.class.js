@@ -37,7 +37,7 @@ class World {
     }
 
     gameOver() {
-        if (this.character.hitPoints == 0) {
+        if (this.character.hitPoints == 0 || this.bossHitPoints == 0) {
             setTimeout(() => {
                 this.gameIsRunning = false;
                 this.endScreen();
@@ -89,16 +89,12 @@ class World {
         });
         this.throwableObjects.forEach((throwableObject) => {
             this.level.enemies.forEach((endboss) => {
-
                 if (endboss.isColliding(throwableObject)) {
-                    console.log("dsfsdfdsgdfgdfg");
                     endboss.isHit();
-
                 }
             });
         });
     }
-
 
     setBackgroundObjects() {
         this.backgroundObjects

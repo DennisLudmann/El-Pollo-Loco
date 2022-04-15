@@ -26,6 +26,11 @@ class Endboss extends MovableObject {
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G22.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G23.png'
     ];
+    IMAGE_DEAD = [
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G24.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G25.png',
+        'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G26.png'
+    ];
     height = 360;
     width = 230;
     x = 719 * 4;
@@ -37,12 +42,17 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGE_WALKING);
         this.loadImages(this.IMAGE_ALERT);
         this.loadImages(this.IMAGE_HURT);
+        this.loadImages(this.IMAGE_DEAD);
         this.applyGravity();
         this.animate();
 
     }
     animate() {
         setInterval(() => {
+            if (this.bossHitPoints == 0) {
+                this.playAnimation(this.IMAGE_DEAD);
+                return;
+            }
             this.number = Math.random();
             if (this.number < 0.15 && !this.isAboveGround()) {
                 this.jump();
@@ -50,21 +60,22 @@ class Endboss extends MovableObject {
             if (this.bossHitPoints < 50) {
                 this.playAnimation(this.IMAGE_HURT);
             } else
-            if (!this.isAboveGround()) {
-                this.playAnimation(this.IMAGE_WALKING);
-            }else
-            if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGE_ALERT);
-            }
+                if (!this.isAboveGround()) {
+                    this.playAnimation(this.IMAGE_WALKING);
+                } else
+                    if (this.isAboveGround()) {
+                        this.playAnimation(this.IMAGE_ALERT);
+                    }
         }, 185);
     }
 
     isHit() {
         this.bossHitPoints -= 10;
-        console.log('BOSS :',this.bossHitPoints);
         if (this.bossHitPoints < 0) {
             this.bossHitPoints = 0;
-        } 
+            
+        }
+        console.log('BOSS :', this.bossHitPoints);
     }
 
 }
