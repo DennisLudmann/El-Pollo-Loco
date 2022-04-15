@@ -25,6 +25,7 @@ class Endboss extends MovableObject {
     width = 230;
     x = 719 * 4;
     y = 90;
+    bossHitPoints = 100;
 
     constructor() {
         super().loadImage(this.IMAGE_WALKING[0]);
@@ -48,4 +49,15 @@ class Endboss extends MovableObject {
             }
         }, 185);
     }
+
+    isHit() {
+        this.bossHitPoints -= 10;
+        console.log(this.bossHitPoints)
+        if (this.bossHitPoints < 0) {
+            this.bossHitPoints = 0;
+        } else {
+            this.lastHit = new Date().getTime();        // time as number
+        }
+    }
+
 }

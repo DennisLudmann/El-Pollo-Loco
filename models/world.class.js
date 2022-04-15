@@ -87,17 +87,17 @@ class World {
                 }
             }
         });
-            this.throwableObjects.forEach((throwableObject) => {
-                this.level.enemies.forEach((endboss) => {
-                    
-                    if (endboss.isColliding(throwableObject)) {
-                        console.log("dsfsdfdsgdfgdfg")
-                        //endboss.Hurt();
-                        
-               }
-           });
+        this.throwableObjects.forEach((throwableObject) => {
+            this.level.enemies.forEach((endboss) => {
+
+                if (endboss.isColliding(throwableObject)) {
+                    console.log("dsfsdfdsgdfgdfg");
+                    endboss.isHit();
+
+                }
+            });
         });
-}
+    }
 
 
     setBackgroundObjects() {
