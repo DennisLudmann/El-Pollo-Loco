@@ -38,7 +38,7 @@ class World {
     }
 
     gameOver() {
-        if (this.character.hitPoints == 0 || this.bossHitPoints == 0) {
+        if (this.character.hitPoints == 0 || this.endboss.hitPoints == 0) {
             setTimeout(() => {
                 this.gameIsRunning = false;
                 this.endScreen();
