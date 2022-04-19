@@ -2,6 +2,7 @@ class World {
 
     character = new Character();
     level = level1;
+    endboss = level1.enemies.find(e => e instanceof Endboss);
     canvas;
     ctx;
     keyboard;
@@ -63,7 +64,7 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach(enemy => {
             if (this.character.isColliding(enemy)) {
-                this.character.isHit();
+                this.character.damageReceived(4);
                 this.statusBar.setPercentage(this.character.hitPoints);
             }
         });
@@ -90,7 +91,8 @@ class World {
         this.throwableObjects.forEach((throwableObject) => {
             this.level.enemies.forEach((endboss) => {
                 if (endboss.isColliding(throwableObject)) {
-                    endboss.isHit();
+                    debugger;
+                    this.endboss.damageReceived(15);
                 }
             });
         });

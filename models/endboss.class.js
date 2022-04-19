@@ -35,8 +35,7 @@ class Endboss extends MovableObject {
     width = 230;
     x = 719 * 4;
     y = 90;
-    bossHitPoints = 100;
-
+    
     constructor() {
         super().loadImage(this.IMAGE_WALKING[0]);
         this.loadImages(this.IMAGE_WALKING);
@@ -45,11 +44,11 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGE_DEAD);
         this.applyGravity();
         this.animate();
-
     }
+    
     animate() {
         setInterval(() => {
-            if (this.bossHitPoints == 0) {
+            if (this.hitPoints == 0) {
                 this.playAnimation(this.IMAGE_DEAD);
                 return;
             }
@@ -57,7 +56,7 @@ class Endboss extends MovableObject {
             if (this.number < 0.15 && !this.isAboveGround()) {
                 this.jump();
             }
-            if (this.bossHitPoints < 50) {
+            if (this.hitPoints < 50) {
                 this.playAnimation(this.IMAGE_HURT);
             } else
                 if (!this.isAboveGround()) {
@@ -69,13 +68,6 @@ class Endboss extends MovableObject {
         }, 185);
     }
 
-    isHit() {
-        this.bossHitPoints -= 10;
-        if (this.bossHitPoints < 0) {
-            this.bossHitPoints = 0;
-            
-        }
-        console.log('BOSS :', this.bossHitPoints);
-    }
+   
 
 }

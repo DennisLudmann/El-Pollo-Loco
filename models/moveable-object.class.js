@@ -3,7 +3,7 @@ class MovableObject extends DrawableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 2;
-    hitPoints = 61;
+    hitPoints = 100;
     lastHit = 0;
     totalBottles = 0;
     bottle_sound = new Audio('audio/bottle.mp3');
@@ -45,8 +45,8 @@ class MovableObject extends DrawableObject {
             this.y < mo.y + mo.height;                      // compares bottom left character with right bottom of enemy
     }
     
-    isHit() {
-        this.hitPoints -= 3;
+    damageReceived(damage) {
+        this.hitPoints -= damage;
         if (this.hitPoints < 0) {
             this.hitPoints = 0;
         } else {
