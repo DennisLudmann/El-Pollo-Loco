@@ -41,7 +41,6 @@ run() {
             console.log( 'clearInterval');
         }
     }, 200);
-
 }
 
 gameOver() {
@@ -50,7 +49,6 @@ gameOver() {
             this.gameIsRunning = false;
             this.endScreen();
             this.background_sound.pause();
-    
         }, 2500);
     }
 }
