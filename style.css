@@ -13,11 +13,11 @@ body {
 canvas {
     background-color: black;
     background-image: url("img/9.Intro _ Outro Image/Start Screen/Opción 1.png");
-    /*background-image: url("img/9.Intro _ Outro Image/_Game over_ screen/2.oh no you lost!.png");*/
     background-size: 720px 480px;
     background-repeat: no-repeat;
     border-radius: 10px;
     z-index: 5;
+    display: block;
 }
 
 #endscreen {
@@ -142,4 +142,30 @@ d-none{
   @-ms-keyframes fadeOut {
     0% {opacity:1;}
     100% {opacity:0;}
+  }
+
+  /* SMARTPHONES*/
+
+  @media  only screen and (max-width: 720px) {
+    canvas {
+      width: 100%;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      border-radius: unset;
+    }
+    h1 {
+      display: none;
+    }
+  }
+
+  @media  only screen and (max-height: 480px) {
+    canvas {
+      height: 100vh;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      border-radius: unset;
+    }
+    h1 {
+      display: none;
+    }
   }

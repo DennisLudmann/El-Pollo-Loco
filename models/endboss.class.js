@@ -35,6 +35,7 @@ class Endboss extends MovableObject {
     width = 230;
     x = 719 * 4;
     y = 90;
+    hitPoints;
     
     constructor() {
         super().loadImage(this.IMAGE_WALKING[0]);
@@ -42,10 +43,11 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGE_ALERT);
         this.loadImages(this.IMAGE_HURT);
         this.loadImages(this.IMAGE_DEAD);
+        this.hitPoints = 100;
         this.applyGravity();
         this.animate();
     }
-    
+
     animate() {
         setInterval(() => {
             if (this.hitPoints == 0) {

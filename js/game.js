@@ -9,6 +9,13 @@ function init() {
     endScreenRemove();
 }
 
+/*
+function mutePage(){
+    debugger;
+        document.querySelectorAll("video, audio").forEach( elem => muteMe(elem) );
+    }
+*/
+
 function fullScreen() {
     canvas.requestFullscreen();
 }

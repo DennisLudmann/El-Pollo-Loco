@@ -40,6 +40,7 @@ class World {
     gameOver() {
         if (this.character.hitPoints == 0 || this.endboss.hitPoints == 0) {
             setTimeout(() => {
+                debugger;
                 this.gameIsRunning = false;
                 this.endScreen();
                 this.background_sound.pause();
@@ -91,7 +92,6 @@ class World {
         this.throwableObjects.forEach((throwableObject) => {
             this.level.enemies.forEach((endboss) => {
                 if (endboss.isColliding(throwableObject)) {
-                    debugger;
                     this.endboss.damageReceived(15);
                 }
             });

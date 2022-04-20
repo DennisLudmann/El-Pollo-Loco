@@ -66,7 +66,7 @@ class Character extends MovableObject {
     height = 310;
     width = 100;
     speed = 8;
-    hitPoints = 61;
+    hitPoints;
     world;
     walking_sound = new Audio('audio/running.mp3');
     jumping_sound = new Audio('audio/jump.mp3');
@@ -80,6 +80,7 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGE_DYING);
         this.loadImages(this.IMAGE_HURT);
         this.loadImages(this.IMAGE_SHORT_IDLE);
+        this.hitPoints = 61;
         this.applyGravity();
         this.animate();
     }
