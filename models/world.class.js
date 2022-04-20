@@ -35,20 +35,22 @@ run() {
         this.checkCollisions();
         this.checkThrowableObjects();
         this.gameOver();
+        console.log(this.gameIsRunning)
+        if (this.gameIsRunning == false) {
+            clearInterval(runInterval);
+            console.log( 'clearInterval');
+        }
     }, 200);
 
 }
-runStop() {
-    clearInterval(runInterval);
-    this.runInterval = 0;
-}
+
 gameOver() {
     if (this.character.hitPoints == 0 || this.endboss.hitPoints == 0) {
         setTimeout(() => {
             this.gameIsRunning = false;
             this.endScreen();
             this.background_sound.pause();
-            
+    
         }, 2500);
     }
 }
