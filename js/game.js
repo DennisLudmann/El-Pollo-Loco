@@ -6,8 +6,7 @@ function init() {
     canvas = document.getElementById('canvas');
     initLevel();
     world = new World(canvas, keyboard);            // to pass on canvas and keyboard to the world.class 
-    endScreenRemove();
-
+    clearCanvas();
 }
 
 /*
@@ -20,7 +19,8 @@ function fullScreen() {
     canvas.requestFullscreen();
 }
 
-function endScreenRemove() {
+function clearCanvas() {
+    document.getElementById('canvas').style.background = "none";
     let e = document.getElementById("endscreen");
     e.classList.remove("game-over");
 }

@@ -54,6 +54,9 @@ class Endboss extends MovableObject {
             if (this.hitPoints == 0) {
                 this.playAnimation(this.IMAGE_DEAD);
                 this.victory_sound.play();
+                setTimeout(() => {
+                    this.victory_sound.pause();
+                }, 2000);
             }
             this.number = Math.random();
             if (this.number < 0.15 && !this.isAboveGround()) {
