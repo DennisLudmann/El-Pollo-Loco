@@ -36,6 +36,7 @@ class Endboss extends MovableObject {
     x = 719 * 4;
     y = 90;
     hitPoints;
+    victory_sound = new Audio('audio/victory.mp3');
     
     constructor() {
         super().loadImage(this.IMAGE_WALKING[0]);
@@ -52,7 +53,7 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (this.hitPoints == 0) {
                 this.playAnimation(this.IMAGE_DEAD);
-                return;
+                this.victory_sound.play();
             }
             this.number = Math.random();
             if (this.number < 0.15 && !this.isAboveGround()) {

@@ -86,7 +86,7 @@ class Character extends MovableObject {
     }
 
     animate() {
-        setInterval(() => {
+        let animateInterval1 = setInterval(() => {
             this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
@@ -103,14 +103,24 @@ class Character extends MovableObject {
                 this.jumping_sound.play();
             }
             this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
+            if (this.world.gameIsRunning == false) {
+                setTimeout(() => {
+                    clearInterval(animateInterval1);
+                    console.log('animateInterval1-cleared')
+                }, 2000);
+
+            }
         }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
 
-        let animateInterval = setInterval(() => {
+        let animateInterval2 = setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGE_DYING);
                 this.victory_sound.play();
-                clearInterval(animateInterval);         // to stop the interval from running after death
-                console.log('animateInterval-cleared')
+                setTimeout(() => {
+                    clearInterval(animateInterval2);         // to stop the interval from running after death
+                    console.log('animateInterval2-cleared')
+                }, 2000);
+
             }
             else if (this.isHurt()) {
                 this.playAnimation(this.IMAGE_HURT);

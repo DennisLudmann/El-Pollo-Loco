@@ -37,8 +37,8 @@ run() {
         this.gameOver();
         console.log(this.gameIsRunning)
         if (this.gameIsRunning == false) {
-            clearInterval(runInterval);
-            console.log( 'clearInterval');
+            clearInterval(runInterval);         // to stop the interval from running after gameOver
+            console.log( 'runInterval-cleared');
         }
     }, 200);
 }

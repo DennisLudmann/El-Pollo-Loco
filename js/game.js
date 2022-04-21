@@ -7,11 +7,11 @@ function init() {
     initLevel();
     world = new World(canvas, keyboard);            // to pass on canvas and keyboard to the world.class 
     endScreenRemove();
+
 }
 
 /*
 function mutePage(){
-    debugger;
         document.querySelectorAll("video, audio").forEach( elem => muteMe(elem) );
     }
 */
