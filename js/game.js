@@ -7,17 +7,20 @@ function init() {
     initLevel();
     world = new World(canvas, keyboard);            // to pass on canvas and keyboard to the world.class 
     clearCanvas();
+   
 }
 
 /*
-mutePage(){
-var vid = document.getElementById("canvas");
+function mutePage() {
+
+var vid = document.getElementById("body");
 vid.volume = 0;
 }
 */
 
 function fullScreen() {
     canvas.requestFullscreen();
+    
 }
 
 function clearCanvas() {
