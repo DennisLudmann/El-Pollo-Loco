@@ -10,9 +10,10 @@ function init() {
 }
 
 /*
-function mutePage(){
-        document.querySelectorAll("video, audio").forEach( elem => muteMe(elem) );
-    }
+mutePage(){
+var vid = document.getElementById("canvas");
+vid.volume = 0;
+}
 */
 
 function fullScreen() {
