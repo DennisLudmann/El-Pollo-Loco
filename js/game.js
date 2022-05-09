@@ -7,6 +7,7 @@ function init() {
     initLevel();
     world = new World(canvas, keyboard);            // to pass on canvas and keyboard to the world.class 
     clearCanvas();
+    showButton();
    
 }
 
@@ -24,10 +25,15 @@ function fullScreen() {
 }
 
 function clearCanvas() {
-    document.getElementById('canvas').style.background = "none";
+    document.getElementById('canvas').style.background = "none";    // remove background img so it doesnt show
     let e = document.getElementById("endscreen");
     e.classList.remove("game-over");
 }
+
+function showButton() {
+    let e = document.getElementById("fullscreen");
+    e.classList.remove("d-none");
+  }
 
 // detect keyboard interaction for controls 
 window.addEventListener("keydown", (e) => {     // for arrow and "wasd" keys
