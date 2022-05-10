@@ -99,16 +99,16 @@ class Character extends MovableObject {
             if (this.world.keyboard.JUMP && !this.isAboveGround()) {         // Jump function !negate
                 this.jump();
                 this.jumping_sound.play();
-            }
-            this.world.camera_x = -this.x + 80;      // so the background moves in the other direction of the move/animation
-            if (this.world.gameIsRunning == false) {
+            }                                     
+            this.world.camera_x = -this.x + 80;                // 80 so we have a little more space to the right edge
+            if (this.world.gameIsRunning == false) {           // so the background moves in the other direction of the move/animation
                 setTimeout(() => {
                     clearInterval(animateInterval1);
                     console.log('animateInterval1-cleared')
                 }, 2000);
 
             }
-        }, 1000 / 60);                                  // 80 so we have a little more space to the right edge
+        }, 1000 / 60);                                 
 
         let animateInterval2 = setInterval(() => {
             if (this.isDead()) {

@@ -37,7 +37,7 @@ class Endboss extends MovableObject {
     y = 90;
     hitPoints;
     victory_sound = new Audio('audio/victory.mp3');
-    
+
     constructor() {
         super().loadImage(this.IMAGE_WALKING[0]);
         this.loadImages(this.IMAGE_WALKING);
@@ -48,15 +48,17 @@ class Endboss extends MovableObject {
         this.applyGravity();
         this.animate();
     }
-
+  
     animate() {
-        setInterval(() => {
-            if (this.hitPoints == 0) {
-                this.playAnimation(this.IMAGE_DEAD);
+        let animateInterval3 = setInterval(() => {
+            if (this.isDead()) {
                 this.victory_sound.play();
+                this.playAnimation(this.IMAGE_DEAD);
                 setTimeout(() => {
-                    this.victory_sound.pause();
-                }, 2000);
+                            clearInterval(animateInterval3);         // to stop the interval from running after death
+                            console.log('animateInterval3-cleared') 
+                        }, 2000);
+                        return;
             }
             this.number = Math.random();
             if (this.number < 0.15 && !this.isAboveGround()) {
@@ -72,8 +74,8 @@ class Endboss extends MovableObject {
                         this.playAnimation(this.IMAGE_ALERT);
                     }
         }, 185);
+    
+
+
     }
-
-   
-
 }

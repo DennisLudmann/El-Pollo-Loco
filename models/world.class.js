@@ -35,7 +35,6 @@ run() {
         this.checkCollisions();
         this.checkThrowableObjects();
         this.gameOver();
-        console.log(this.gameIsRunning)
         if (this.gameIsRunning == false) {
             clearInterval(runInterval);         // to stop the interval from running after gameOver
             console.log( 'runInterval-cleared');
@@ -49,6 +48,7 @@ gameOver() {
             this.gameIsRunning = false;
             this.endScreen();
             this.background_sound.pause();
+            this.endboss.victory_sound.pause();
         }, 2500);
     }
 }
