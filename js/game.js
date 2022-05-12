@@ -14,7 +14,7 @@ function init() {
 /*
 function mutePage() {
 
-var vid = document.getElementById("body");
+let vid = document.getElementById('body');
 vid.volume = 0;
 }
 */
@@ -26,13 +26,13 @@ function fullScreen() {
 
 function clearCanvas() {
     document.getElementById('canvas').style.background = "none";    // remove background img so it doesnt show
-    let e = document.getElementById("endscreen");
-    e.classList.remove("game-over");
+    let e = document.getElementById('endscreen');
+    e.classList.remove('game-over');
 }
 
 function showButton() {
-    let e = document.getElementById("fullscreen");
-    e.classList.remove("d-none");
+    let e = document.getElementById('fullscreen');
+    e.classList.remove('d-none');
   }
 
 // detect keyboard interaction for controls 

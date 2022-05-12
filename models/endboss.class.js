@@ -55,6 +55,7 @@ class Endboss extends MovableObject {
                 this.victory_sound.play();
                 this.playAnimation(this.IMAGE_DEAD);
                 setTimeout(() => {
+                            this.stopInterval = true;
                             clearInterval(animateInterval3);         // to stop the interval from running after death
                             console.log('animateInterval3-cleared') 
                         }, 2000);

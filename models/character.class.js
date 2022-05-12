@@ -104,9 +104,9 @@ class Character extends MovableObject {
             if (this.world.gameIsRunning == false) {           // so the background moves in the other direction of the move/animation
                 setTimeout(() => {
                     clearInterval(animateInterval1);
-                    console.log('animateInterval1-cleared')
+                    this.stopInterval = true;
+                    console.log('animateInterval1-cleared');
                 }, 2000);
-
             }
         }, 1000 / 60);                                 
 
@@ -116,9 +116,8 @@ class Character extends MovableObject {
                 this.victory_sound.play();
                 setTimeout(() => {
                     clearInterval(animateInterval2);         // to stop the interval from running after death
-                    console.log('animateInterval2-cleared')
+                    console.log('animateInterval2-cleared');
                 }, 2000);
-
             }
             else if (this.isHurt()) {
                 this.playAnimation(this.IMAGE_HURT);
@@ -127,7 +126,6 @@ class Character extends MovableObject {
             else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGE_JUMPING);
             } else {
-
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {         //if key.Right or Left is true, execute moving
                     this.playAnimation(this.IMAGE_WALKING);
                 }

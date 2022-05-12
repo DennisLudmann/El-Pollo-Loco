@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject {
     hitPoints = 100;
     lastHit = 0;
     totalBottles = 0;
+    stopInterval = false;
     bottle_sound = new Audio('audio/bottle.mp3');
     heal_sound = new Audio('audio/vita.mp3');
 
@@ -17,10 +18,14 @@ class MovableObject extends DrawableObject {
     }
 
     applyGravity() {
-        setInterval(() => {
+        let gravityInterval = setInterval(() => {
+           
             if (this.isAboveGround() || this.speedY > 0) {       // isAboveGround so gravity pulls anything that is temporary airborn down
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
+            }
+            if (this.stopInterval == true) {
+                clearInterval(gravityInterval);
             }
         }, 1000 / 25);
     }
