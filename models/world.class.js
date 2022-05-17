@@ -1,5 +1,7 @@
 class World {
 
+    static counter = 0;
+    id;
     character = new Character();
     level = level1;
     endboss = level1.enemies.find(e => e instanceof Endboss);
@@ -14,9 +16,12 @@ class World {
     bottlesCollected;
     gameIsRunning = true;
     background_sound = new Audio('audio/backgrund-accustic.mp3');
+    gameOverTriggered = false;
 
 
     constructor(canvas, keyboard) {
+        this.id = World.counter;
+        World.counter++;
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;                   // to pass the details to the canvas outside the function
         this.keyboard = keyboard;
@@ -43,7 +48,8 @@ run() {
 }
 
 gameOver() {
-    if (this.character.hitPoints == 0 || this.endboss.hitPoints == 0) {
+    if ((this.character.hitPoints == 0 || this.endboss.hitPoints == 0) && !this.gameOverTriggered) {
+        this.gameOverTriggered = true;
         setTimeout(() => {
             this.gameIsRunning = false;
             this.endScreen();

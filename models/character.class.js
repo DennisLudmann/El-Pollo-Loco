@@ -25,9 +25,8 @@ class Character extends MovableObject {
         'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-53.png',
         'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-54.png',
         'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-55.png',
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png',
-        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-57.png'
-    ];
+        'img/2.Secuencias_Personaje-Pepe-corrección/5.Muerte/D-56.png'
+          ];
     IMAGE_HURT = [
         'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-41.png',
         'img/2.Secuencias_Personaje-Pepe-corrección/4.Herido/H-42.png',
@@ -84,7 +83,7 @@ class Character extends MovableObject {
     }
 
     animate() {
-        let animateInterval1 = setInterval(() => {
+        setInterval(() => {
             this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
@@ -101,23 +100,12 @@ class Character extends MovableObject {
                 this.jumping_sound.play();
             }                                     
             this.world.camera_x = -this.x + 80;                // 80 so we have a little more space to the right edge
-            if (this.world.gameIsRunning == false) {           // so the background moves in the other direction of the move/animation
-                setTimeout(() => {
-                    clearInterval(animateInterval1);
-                    this.stopInterval = true;
-                    console.log('animateInterval1-cleared');
-                }, 2000);
-            }
         }, 1000 / 60);                                 
 
-        let animateInterval2 = setInterval(() => {
+        setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGE_DYING);
                 this.victory_sound.play();
-                setTimeout(() => {
-                    clearInterval(animateInterval2);         // to stop the interval from running after death
-                    console.log('animateInterval2-cleared');
-                }, 2000);
             }
             else if (this.isHurt()) {
                 this.playAnimation(this.IMAGE_HURT);

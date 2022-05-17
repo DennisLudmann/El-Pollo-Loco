@@ -50,30 +50,26 @@ class Endboss extends MovableObject {
     }
   
     animate() {
-        let animateInterval3 = setInterval(() => {
+        setInterval(() => {
             if (this.isDead()) {
                 this.victory_sound.play();
                 this.playAnimation(this.IMAGE_DEAD);
-                setTimeout(() => {
-                            this.stopInterval = true;
-                            clearInterval(animateInterval3);         // to stop the interval from running after death
-                            console.log('animateInterval3-cleared') 
-                        }, 2000);
-                        return;
-            }
-            this.number = Math.random();
-            if (this.number < 0.15 && !this.isAboveGround()) {
-                this.jump();
-            }
-            if (this.hitPoints < 50) {
-                this.playAnimation(this.IMAGE_HURT);
-            } else
-                if (!this.isAboveGround()) {
+            } else {
+                this.number = Math.random();
+                if (this.number < 0.15 && !this.isAboveGround()) {
+                    this.jump();
+                }
+                if (this.hitPoints < 50) {
+                    this.playAnimation(this.IMAGE_HURT);
+                } 
+                else if (!this.isAboveGround()) {
                     this.playAnimation(this.IMAGE_WALKING);
-                } else
-                    if (this.isAboveGround()) {
-                        this.playAnimation(this.IMAGE_ALERT);
-                    }
+                } 
+                else if (this.isAboveGround()) {
+                    this.playAnimation(this.IMAGE_ALERT);
+                }
+            }
+            
         }, 185);
     
 
